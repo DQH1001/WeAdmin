@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 5.针对所有实体类对象的映射配置文件
+ 映射
+namespace="com.java.entity":针对该包下的所以实体类对象映射配置文件   -->
+<!-- 使用bind加%%需要引入如下配置 -->
+<!-- <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<mapper namespace="com.javaweb.mapper.ICompsMapper">
+
+    <resultMap id="ClassesResult" type="com.java.entity.Classes">
+      <id column="clid" property="clid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="clname" property="clname" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="cltest" property="cltest" jdbcType="VARCHAR" javaType="string"/>  
+    </resultMap>
+
+	<resultMap id="TeachersResult" type="com.java.entity.Teachers">
+      <id column="teaid" property="teaid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="teaname" property="teaname" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="teapwd" property="teapwd" jdbcType="VARCHAR" javaType="string"/>
+     <result column="tealogo" property="tealogo" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="menus" property="menus" jdbcType="VARCHAR" javaType="string"/>  
+    </resultMap>
+	
+	
+	<resultMap id="SpfwordResult" type="com.java.entity.Spfwords">
+      <id column="spfid" property="spfid" jdbcType="INTEGER" javaType="Integer" />  
+      <result column="spfsid" property="spfsid" jdbcType="INTEGER" javaType="Integer"/> 
+     <result column="spfdate" property="spfdate" jdbcType="VARCHAR" javaType="string" />
+     <result column="spftest" property="spftest" jdbcType="VARCHAR" javaType="string" />
+     <result column="spflogo" property="spflogo" jdbcType="VARCHAR" javaType="string"/> 
+      </resultMap>
+      
+	 <resultMap id="StudentResult" type="com.java.entity.Student">
+      <id column="sid" property="sid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="sname" property="sname" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="sdate" property="sdate" jdbcType="VARCHAR" javaType="string" />
+     <result column="spwd" property="spwd" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="choose" property="choose" jdbcType="VARCHAR" javaType="string"/>  
+      <result column="s_clid" property="s_clid" jdbcType="INTEGER" javaType="Integer" /> 
+      <result column="slogo" property="slogo" jdbcType="VARCHAR" javaType="string"/>      
+      <result column="ssex" property="ssex" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="stel" property="stel" jdbcType="VARCHAR" javaType="string" />
+     <result column="scity" property="scity" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="semail" property="semail" jdbcType="VARCHAR" javaType="string"/>   
+     <result column="menus" property="menus" jdbcType="VARCHAR" javaType="string"/>   
+      <result column="signature" property="signature" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="sresume" property="sresume" jdbcType="VARCHAR" javaType="string"/>
+     <result column="cname" property="cname" jdbcType="VARCHAR" javaType="string" />
+     <result column="pname" property="pname" jdbcType="VARCHAR" javaType="string"/>    
+     <association property="classes" javaType="com.java.entity.Classes"
+    	       resultMap="ClassesResult"/>
+    </resultMap>
+    
+    <resultMap id="ScoresResult" type="com.java.entity.Scores">
+      <id column="scid" property="scid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="s_pid" property="s_pid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="s_cid" property="s_cid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="s_sid" property="s_sid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="number" property="number" jdbcType="INTEGER" javaType="Integer" /> 
+     <association property="comps" javaType="com.java.entity.Comps"
+    	       resultMap="CompanyResult"/>
+    <association property="project" javaType="com.java.entity.Projects"
+    	       resultMap="ProjectsResult"/>
+   	<association property="stus" javaType="com.java.entity.Student"
+    	       resultMap="StudentResult"/> 
+    </resultMap>
+    
+        <!-- 查询一个学生所有信息 -->
+   <select id="selectStuInfoBysid" resultMap="StudentResult" parameterType="com.java.entity.Student">
+		 select s.*,l.*,(select pemenus from permission where peid=2) as menus,
+		 IFNULL((select scid from scores WHERE s_sid=s.sid),'no') as choose
+		  <if test="choose neq 'no'">
+			,(select cname from comps where cid=(select s_cid from scores where scid=choose)) as cname,
+			(select pname from projects where pid=(select s_pid from scores where scid=choose)) as pname 
+		</if>
+		 from stus s,classes l where s.s_clid=l.clid and s.sid=#{sid}
+    </select>
+    
+    <!-- 学生插入留言 -->
+    <insert id="insertPost">
+    insert into spfwords values(null,NOW(),#{spftest},#{spflogo},#{spfsid})
+    </insert>
+    <!-- 学生个人中心留言 -->
+    <select id="getProfileWords" resultMap="SpfwordResult" parameterType="int">
+		select * from spfwords where spfsid=#{1}
+    </select> 
+    <!-- 教师登录验证 -->
+   <select id="loginCheckedTea" resultMap="TeachersResult" parameterType="com.java.entity.Teachers">
+		select t.*,(select pemenus from permission where peid=3) as menus from teachers t where
+		((t.teaid=#{teaname} and t.teapwd=#{teapwd}) or (t.teaname=#{teaname} and t.teapwd=#{teapwd})) 
+    </select> 
+    
+    <select id="selectNearlyStus" resultMap="StudentResult" parameterType="com.java.entity.Student">
+    	SELECT s.*,IFNULL(c.clname,'空')as clname,IFNULL(m.cname,'空') as cname,IFNULL(p.pname,'空') as pname 
+		from stus s LEFT JOIN classes c ON s.s_clid=c.clid 
+		LEFT JOIN scores e ON e.s_sid=s.sid 
+		LEFT JOIN comps m ON e.s_cid=m.cid
+		LEFT JOIN projects p ON e.s_pid=p.pid 
+		WHERE 1=1 
+		<if test="sid!=0 and sid neq null and sid neq '' and sid neq 0">
+			and s.sid=#{sid}  
+		</if>
+		  <if test="sname neq null and sname neq ''">
+		  and s.sname like #{sname}  
+		  </if>
+		   <if test="ccid neq 0 and ccid neq null and ccid neq ''">
+		  and m.cid=#{ccid}  
+		  </if>
+		  <if test="ppid neq 0 and ppid neq null and ppid neq ''">
+		  and p.pid=#{ppid}   
+		  </if>
+		ORDER BY s.sid
+    </select>  
+    
+    <insert id="InsertStusList" parameterType="java.util.List">
+    	insert into stus(sid,sname,spwd,sdate,s_clid,ssex)value
+    	<foreach collection="list" item="ms" separator=",">
+    		(null,#{ms.sname},#{ms.spwd},now(),
+    		(select clid from classes where clname =#{ms.classes.clname}),#{ms.ssex})
+    	</foreach>
+    </insert>
+    
+    <select id="selectStusChooseInfo" resultMap="StudentResult">
+   		<!-- SELECT s.*,c.clname,m.cname,p.pname from stus s,classes c,scores e,comps m,projects p 
+	where s.s_clid=c.clid and e.s_cid=m.cid and e.s_sid=s.sid and e.s_pid=p.pid
+	ORDER BY s.sid  -->
+	SELECT s.*,IFNULL(c.clname,'空')as clname,IFNULL(m.cname,'空') as cname,IFNULL(p.pname,'空') as pname 
+	from stus s LEFT JOIN classes c ON s.s_clid=c.clid 
+	LEFT JOIN scores e ON e.s_sid=s.sid 
+	LEFT JOIN comps m ON e.s_cid=m.cid
+	LEFT JOIN projects p ON e.s_pid=p.pid 
+	WHERE 1=1 
+	
+     </select> 
+    
+    <update id="uploadStuSlogo" parameterType="com.java.entity.Student">
+    	update stus set slogo=#{slogo} where sid=#{sid}
+    </update>    
+    
+    <update id="updateStuInfo" parameterType="com.java.entity.Student">
+    	update stus set ssex=#{ssex},scity=#{scity},semail=#{semail},stel=#{stel} where sid=#{sid}
+    </update>
+    
+    <update id="updateStuInfo1" parameterType="com.java.entity.Student">
+    	update stus set sresume=#{sresume},signature=#{signature} where sid=#{sid}
+    </update>
+    
+     <select id="selectLikeAll" resultMap="CompanyResult" parameterType="int">
+    select * from comps where FIND_IN_SET(cid,(select sattrent from stus WHERE sid=#{sid}))
+     </select> 
+     
+     <update id="deleteLike">
+     	update stus set sattrent=replace(sattrent,#{cid},'') where sid=#{sid}
+     </update>
+    
+    <update id="insertLike">
+    update stus set sattrent=CONCAT(sattrent,#{cid})WHERE sid=#{sid}
+    </update>
+    <!-- 查询chart图信息，公司名及被选数量 -->
+   <!--  <select id="selectScoreforform" resultMap="ScoresResult">
+    select COUNT(s.s_pid) as number ,s.s_cid,(SELECT cname from comps where cid=s.s_cid) as 
+    cname from scores s GROUP BY s.s_cid ORDER BY s.s_cid 
+     </select> -->
+     <select id="selectScoreforform" resultMap="ScoresResult">
+    select COUNT(s.s_pid) as number ,s.s_cid,(SELECT cname from comps where cid=s.s_cid) as 
+    cname,(SELECT c_pros from comps where cid=s.s_cid) as 
+    c_pros from scores s GROUP BY s.s_cid ORDER BY s.s_cid
+     </select> 
+
+     
+    <!-- 查询所选公司名，专业名，是否选择过专业，学生所有信息 -->
+   <select id="loginChecked" resultMap="StudentResult" parameterType="com.java.entity.Student">
+		 select s.*,l.*,(select pemenus from permission where peid=2) as menus,
+		 IFNULL((select scid from scores WHERE s_sid=s.sid),'no') as choose
+		  <if test="choose neq 'no'">
+			,(select cname from comps where cid=(select s_cid from scores where scid=choose)) as cname,
+			(select pname from projects where pid=(select s_pid from scores where scid=choose)) as pname 
+		</if>
+		 from stus s,classes l where s.s_clid=l.clid and 
+		((s.sid=#{sname} and s.spwd=#{spwd}) or (s.sname=#{sname} and s.spwd=#{spwd})) 
+    </select> 
+    
+     <select id="RegistrationChecked" resultMap="StudentResult" parameterType="com.java.entity.Student">
+     select * from stus where sname=#{sname}
+    </select> 
+    
+     <insert id="stuRegistration" parameterType="com.java.entity.Student">
+    	INSERT INTO stus set sname=#{sname},spwd=#{spwd},s_clid=#{s_clid},slogo=#{slogo}
+    </insert>
+    
+    <select id="selectClassesAll" resultMap="ClassesResult">
+     	select * from classes
+    </select> 
+    
+    <select id="selectScoresAll" resultType="com.java.entity.Scores">
+     	select * from scores where s_sid=#{sid}
+    </select> 
+    
+     <insert id="insertScores" parameterType="com.java.entity.Scores">
+     insert into scores values(null,#{s_pid},#{s_cid},#{s_sid});
+        <selectKey resultType="int" keyProperty="scid"> 
+             SELECT LAST_INSERT_ID() AS ID 
+        </selectKey>     
+    </insert>
+    
+    <update id="updateScores" parameterType="com.java.entity.Scores">
+    	update scores set s_pid=#{s_pid},s_cid=#{s_cid} where scid=#{scid} and s_sid=#{s_sid};
+    </update>
+</mapper>

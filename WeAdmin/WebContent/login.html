@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>Login</title>
+
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="login-body">
+
+<div class="container">
+
+    <form class="form-signin" action="index.html">
+        <div class="form-signin-heading text-center" style="height:160px">
+            <h1 class="sign-title">Sign In</h1>
+            <img src="images/login-logo.png" alt=""/>
+        </div>
+        <div class="square single-row" align="center" id="wrap">
+            <input type="radio" id="stutt" checked="checked" value="stu" class="chk" name="demo-radio">
+            <label>学生</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio"  value="tea" class="chk" name="demo-radio">
+            <label>教师</label>
+        </div>
+        <div class="login-wrap">
+            <input type="text" id="username" class="form-control" placeholder="学生ID/Name" autofocus>
+            <input type="password" id="password" class="form-control" placeholder="学生密码">
+
+            <button id="subBtn" class="btn btn-lg btn-login btn-block" type="button">
+                <i class="fa fa-check"></i>
+            </button>
+
+            <div class="registration">
+                Not a member yet?
+                <a class="" href="registration.html">
+                    Signup
+                </a>
+            </div>
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me"> Remember me
+                <span class="pull-right">
+                    <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
+
+                </span>
+            </label>
+
+        </div>
+
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Forgot Password ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Enter your e-mail address below to reset your password.</p>
+                        <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+		
+		
+    </form>
+
+</div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#stutt").css("checked",true);
+	$(".chk").click(function(){
+		if($(this).attr("value")=="stu"){
+			$("#username").attr("placeholder","学生ID/Name");
+			$("#password").attr("placeholder","学生密码");
+		}else if($(this).attr("value")=="tea"){
+			$("#username").attr("placeholder","教师ID/Name");
+			$("#password").attr("placeholder","教师密码");
+		}
+	});
+	
+	//要把要存储HTML5缓存的数据放入缓存function
+	function cl(key,msg){
+		//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+		//判断当前浏览器是否支持HTML5，
+		if (window.localStorage) {
+			 //封装浏览器缓存 WebStrong，setItem类似setAttribute方法
+		    localStorage.setItem(key,msg);	
+		} else {
+			//封装Cookie
+		    Cookie.write(key,msg);	
+		}
+	} 
+	
+	$("#subBtn").click(function(){
+		var sss=$('#wrap input[name="demo-radio"]:checked').val();
+		//alert(sss);
+		$.ajax({
+			url:"loginServlet",
+			method:"post",
+			dataType:"json",
+			data:{"usn":$("#username").val(),
+				"pas":$("#password").val(),
+				"chk":sss},
+			success:function(data){
+				if(sss=="stu"){
+					//alert(data.sname);
+					if(data.sname!=null && data.sname!=""){
+						//alert("欢迎登陆:"+data.sname);
+						cl("stuinfo",JSON.stringify(data));
+						//跳转主页
+						location.href="dynamic_table.html";
+					}else{
+						alert("学生用户名或密码错误!");
+					}
+				}else{
+					//alert(data.sname);
+					if(data.teaname!=null && data.teaname!=""){
+						//alert("欢迎登陆:"+data.sname);
+						cl("teainfo",JSON.stringify(data));
+						//跳转主页
+						location.href="student_list.html";
+					}else{
+						alert("教师用户名或密码错误!");
+					}
+				}
+				
+			},
+			error:function(){
+			   	alert("eerr1");
+			}
+		});
+	})
+	
+	
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE HTML><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/splash/splash-icon.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="images/splash/splash-icon-big.png">
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen.png" 	media="screen and (max-device-width: 320px)" />  
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen@2x.png" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" /> 
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen-six.png" media="(device-width: 375px)">
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen-six-plus.png" media="(device-width: 414px)">
+<link rel="apple-touch-startup-image" sizes="640x1096" href="images/splash/splash-screen@3x.png" />
+<link rel="apple-touch-startup-image" sizes="1024x748" href="images/splash/splash-screen-ipad-landscape" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : landscape)" />
+<link rel="apple-touch-startup-image" sizes="768x1004" href="images/splash/splash-screen-ipad-portrait.png" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : portrait)" />
+<link rel="apple-touch-startup-image" sizes="1536x2008" href="images/splash/splash-screen-ipad-portrait-retina.png"   media="(device-width: 768px)	and (orientation: portrait)	and (-webkit-device-pixel-ratio: 2)"/>
+<link rel="apple-touch-startup-image" sizes="1496x2048" href="images/splash/splash-screen-ipad-landscape-retina.png"   media="(device-width: 768px)	and (orientation: landscape)	and (-webkit-device-pixel-ratio: 2)"/>
+  <title>comp_detail2</title>
+
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/style-responsive.css" rel="stylesheet">
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
+    
+  <link href="../css/layer.css" rel="stylesheet">
+<link href="styles/style.css"     		 rel="stylesheet" type="text/css">
+<link href="styles/framework.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/owl.theme.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/swipebox.css"		 rel="stylesheet" type="text/css">
+<link href="styles/font-awesome.css"	 rel="stylesheet" type="text/css">
+<link href="styles/animate.css"			 rel="stylesheet" type="text/css">
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
+  <style type="text/css">
+.header-myMain{
+    float:left;
+    background-image:url(images/myMain.png);
+    width:70px;
+    height:15px;
+    background-size:70px 15px;
+    margin-top:22px;
+    margin-left:30px;
+}
+</style>  
+    
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/jqueryui.js"></script>
+<script type="text/javascript" src="scripts/framework.plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+</head>
+<body> 
+
+<div id="preloader">
+	<div id="status">
+    	<p class="center-text">
+			Loading the content...
+            <em>Loading depends on your connection speed!</em>
+        </p>
+    </div>
+</div>
+    
+    
+<ul class="menu-top">
+    <li class="active-menu"><a href="index.html"><i class="fa fa-home"></i>主页<i class="fa fa-circle"></i></a></li>
+  
+    <li>
+        <a class="has-submenu" href="#"><i class="fa fa-files-o"></i>页面<i class="fa fa-plus"></i></a>
+        <ul class="submenu">
+            <li><a href="dynamic_table.html"><i class="fa fa-angle-right"></i>公司选择<i class="fa fa-circle"></i></a></li>
+            <li><a href="profile.html"><i class="fa fa-angle-right"></i>个人中心<i class="fa fa-circle"></i></a></li>
+            <li><a href="university.html"><i class="fa fa-angle-right"></i>校园风采<i class="fa fa-circle"></i></a></li>
+            
+        </ul>
+    </li>      
+    <li>
+        <a class="has-submenu" href="#"><i class="fa fa-mobile"></i>切换用户<i class="fa fa-plus"></i></a>
+        <ul class="submenu">
+            <li><a href="login.html"><i class="fa fa-angle-right"></i>登录<i class="fa fa-circle"></i></a></li>
+            <li><a href="registration.html"><i class="fa fa-angle-right"></i>注册<i class="fa fa-circle"></i></a></li>
+           
+        </ul>
+    </li>    
+    <li><a class="close-menu" href="#"><i class="fa fa-times"></i>Close<i class="fa fa-circle"></i></a></li>
+</ul>
+<div id="app" style="background:#F1FAFA;"> 
+<div class="header">
+    <a href="index.html" class="header-myMain"></a>
+    <a href="#" class="header-navigation show-navigation"><i class="fa fa-navicon"></i></a>
+</div>
+<div class="header-clear-big"></div>
+    
+<div class="content">
+			
+			<span class="center-text" style=" font-size:20px;font-weight:bold;font-family:'楷体';">{{cname}}</span>
+			<br>
+            <div id="comTxt">
+					sed ut per
+			</div>
+				<div v-if="seen3" style="margin-left:92%;">
+		          	 <img src="../images/ok1.png" style="width:30px;height:30px;" @click="nolike()">
+	            </div>
+	            <div v-else style="margin-left:92%;">
+		            <img padding="500px" src="../images/no1.png" style="width:30px;height:30px;" @click="ilike()">
+	            </div>
+            <div class="decoration"></div>
+
+    <div class="container no-bottom">
+        <span class="center-text" style=" font-size:20px;font-weight:bold;font-family:'楷体';">专业选择</span>
+        <br>
+    </div>
+    <div class="decoration"></div>
+    <div class="notification-page" v-for="item in todos">
+        <p class="notification-page-item">
+            <img :src="'../'+item.plogo" alt="img">
+            <em>
+               {{item.pname}}<br>
+               详情:{{item.pdetail}}
+            </em>
+            <a>已选{{item.numbers}}人</a>
+            <a @click="ChooseCom(item.pid+'-'+item.pname)">选择</a>
+        </p>
+        <div class="decoration hide-if-responsive"></div>
+    </div>       
+</div>
+<!-- Content Heding -->
+<div class="content-heading">
+    <h4>员工列表</h4>   
+    <p>User List</p>
+    <i class="fa fa-user"></i>
+    <div class="overlay"></div>
+    <img src="images/pictures/5w.jpg" alt="img">
+</div>
+
+<!-- Page Content-->
+<div class="content">
+    <div class="decoration"></div>
+    <div class="container">
+            <div class="submenu-navigation">
+                <a href="#" class="submenu-nav-deploy">展开-----收起</a>
+                <div class="submenu-nav-items">
+                    <a href="#" v-for="item in ls">
+                    <p class="notification-page-item">
+					<img :src="'../'+item.ulogo" alt=""/>
+                   <em> {{item.uname}}-{{item.urose}}</em>
+                    <strong>人气值:{{item.pc}}</strong>
+                    </p>
+					</a>
+					<a class="button button-yellow center-button"  @click="getUserDetail()">换一批</a>
+                </div>
+            </div>
+        </div>
+    <div class="decoration"></div>
+</div>
+
+
+ <!-- Content Heding -->
+<div class="content-heading">
+    <h4>公司留言</h4>
+    <p>Company words</p>
+    <i class="fa fa-star"></i>
+    <div class="overlay"></div>
+    <img src="images/pictures/3w.jpg" alt="img">
+</div>
+
+
+ <div class="content">
+    
+    <div class="container no-bottom" ng-controller="secondController">
+        <!-- Page Columns-->
+        <div class="one-half-responsive" v-for="cw in CompWords" v-if="cw.whid==0">
+            <p class="thumb-left no-bottom">
+                <img v-if="cw.wauthor=='s'" alt="" :src="'../'+cw.slogo" class="media-object">
+                <img v-else alt="" :src="clogo" class="media-object">
+                <strong>主题：{{cw.wtitle}}</strong><a class="pull-right reply" @click="reply(cw.wid,cw.wtitle)">Reply</a>
+                <em><br><span class="pull-left">回复数量:{{cw.wcount}}<br>回复时间：{{cw.wdate}} <br>内容：{{cw.wcontent}}  </span></em>
+                 
+               
+                <div class="album" style="margin-left:120px;">            
+                <img width="50px" height="50px" :src="'../upload/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!=''">
+           		</div>
+            </p>
+            		
+			        <div class="one-half-responsive last-column" v-for="word in CompWords" v-if="word.whid==cw.wid">
+			        <div class="decoration"></div>        
+			            <p class="thumb-right no-bottom">
+			                <img v-if="word.wauthor=='s'" alt="" :src="'../'+word.slogo" class="media-object">
+				            <img v-else alt="" :src="clogo" class="media-object">
+			                <strong>主题：{{word.wtitle}}</strong>
+			                <em><br><span class="pull-left">回复时间：{{word.wdate}}<br>回复内容：{{word.wcontent}}</span></em>
+			                
+			                <div class="album">
+				            <img width="50px" height="50px" :src="'../upload/'+word.wimages" v-if="word.wimages!=null && word.wimages!=''">
+			            	</div>
+			            </p>
+			            <div class="thumb-clear"></div>
+			        </div>
+           <div class="decoration"></div>	
+        </div>
+        
+        
+    </div>
+
+</div>
+ 
+ <div class="panel">
+            <div class="panel-body">
+                <h1 class="text-center cmnt-head ">Leave a Comments</h1>
+                <p class="text-center fade-txt">If you want you can <a href="#">Cancel Reply</a></p>
+
+                <form class="form-signin" id="stuForms" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <input id="wtit" name="wtit" type="text" class="col-lg-12 form-control" placeholder="title *">
+                            <input id="sidd" name="sidd" type="hidden">
+                            <input id="cidd" name="cidd" type="hidden">
+                            <input id="widd" name="widd" type="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      
+                                   <div class="col-lg-12">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+            
+						              <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+						                  <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+						              </div>
+						              <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px;
+						               max-height: 150px; line-height: 20px;"></div>
+						              <div>
+						                <span class="btn btn-default btn-file">
+						                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+						                <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+						                <input type="file" name="file1" class="default" />
+						              	</span>
+						               <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">
+						               <i class="fa fa-trash"></i> Remove</a>
+						              </div>
+						            </div>
+                           			</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <textarea id="wcont" name="wcont" class=" form-control" rows="8" placeholder="回复"></textarea>
+                        </div>
+                    </div>
+                    <p>
+                        <button @click="sub()" class="btn btn-post-cmnt pull-right" type="button">Post Comment</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+ 
+ 
+ 
+<!-- Page Footer-->
+<div class="footer">
+    <div class="footer-socials half-bottom">
+        <a href="#" class="footer-facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="footer-twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="footer-google"><i class="fa fa-google-plus"></i></a>
+        <a href="#" class="footer-share show-share-bottom"><i class="fa fa-share-alt"></i></a>
+        <a href="#" class="footer-up"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <p class="center-text">Copyright 2015. All rights reserved.</p>
+</div>
+
+<!-- Share Elements-->
+<div class="share-bottom">
+    <h3>Share Page</h3>
+    <div class="share-socials-bottom">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.themeforest.net/">
+            <i class="fa fa-facebook facebook-color"></i>
+            Facebook
+        </a>
+        <a href="https://twitter.com/home?status=Check%20out%20ThemeForest%20http://www.themeforest.net">
+            <i class="fa fa-twitter twitter-color"></i>
+            Twitter
+        </a>
+        <a href="https://plus.google.com/share?url=http://www.themeforest.net">
+            <i class="fa fa-google-plus google-color"></i>
+            Google
+        </a>
+
+        <a href="https://pinterest.com/pin/create/button/?url=http://www.themeforest.net/&media=https://0.s3.envato.com/files/63790821/profile-image.jpg&description=Themes%20and%20Templates">
+            <i class="fa fa-pinterest-p pinterest-color"></i>
+            Pinterest
+        </a>
+        <a href="sms:">
+            <i class="fa fa-comment-o sms-color"></i>
+            Text
+        </a>
+        <a href="mailto:?&subject=Check this page out!&body=http://www.themeforest.net">
+            <i class="fa fa-envelope-o mail-color"></i>
+            Email
+        </a>
+    </div>
+    <a href="#" class="close-share-bottom">Close</a>
+</div>    
+<div class="menu-wrapper-background"></div>
+</div>
+
+
+  
+<script type="text/javascript" src="../js/vue.js"></script>
+ <script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/layer.js"></script>
+<script type="text/javascript" src="../js/vue-resource.min.js"></script>
+<script src="../js/paragram.js"></script>
+<script type="text/javascript" src="../js/bootstrap-fileupload.min.js"></script>
+<script type="text/javascript">
+var app=new Vue({
+	el:"#app",
+	data:{	
+		scid:'',
+		sid:'',
+		cid:'',
+		pros:'',
+		pname:'',
+		slogo:'',
+		sname:'',
+		clogo:'',
+		cid:'',
+		clname:'',
+		cname:'',
+		todos:[],
+		usernifo:'',
+		ls:[],
+		seen3:'',
+		CompWords:''
+		
+	}, 
+	mounted(){
+		this.getIndex()			
+		
+	},
+	methods:{
+		getIndex:function(){
+			//alert("index");
+			//HTML5和大多数浏览器兼容性问题了。
+			
+			if(window.localStorage){
+				//读取HTML5中的缓存，key是deptlist，而且读取出来text格式，还需要JSON.p.. text转换为json格式
+				this.usernifo=JSON.parse(localStorage.getItem("stuinfo"));
+			}else{
+				this.usernifo=Cookie.read("stuinfo");
+			}
+			this.scid=this.usernifo.choose;
+			this.sid=this.usernifo.sid;			
+			this.slogo="../upload/"+this.usernifo.slogo;
+			this.clname=this.usernifo.classes.clname;
+			this.sname=this.usernifo.sname;					
+			var Request=new Object();
+			Request=GetRequest();
+			this.cid=Request['cid'];
+			this.pros=Request['pros'];			
+			this.$http.post('../vueComDetailServlet',{cid:this.cid,pros:this.pros},{emulateJSON:true})
+			.then(function(res){
+						this.cid=res.body.mp.cid;
+						this.clogo="../"+res.body.mp.clogo;	
+						this.todos=res.body.ls;
+						this.cname=res.body.mp.cname;
+						
+						
+						$.post("../"+res.body.mp.ctext,null,function(data){
+							$("#comTxt").html(data);
+						});
+						
+						
+					},function(res){
+						alert("indexerror")
+					});	
+			this.$nextTick(function(){									  
+			   	this.getUserDetail();									  
+			});
+			this.$nextTick(function(){									  
+			   	this.likeInit();									  
+			});
+			this.$nextTick(function(){									  
+			   	this.getCompWords();									  
+			});
+		},
+		getCompWords(){
+			//alert("CompWord");
+			this.$http.post('../selectCompWordsBycid',{cid:this.cid},{emulateJSON:true})
+			.then(function(res){
+						this.CompWords=res.body;
+					},function(res){
+						alert("cwerror");
+					});
+			
+		},
+		reply(wwid,wwtitle){
+			$("#wtit").val(wwtitle).focus();
+			$("#widd").val(wwid);
+			
+		},
+		sub(){
+			$("#cidd").val(this.cid);//cid
+			$("#sidd").val(this.usernifo.sid);
+			var foData=new FormData($("#stuForms")[0]);			
+			 let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+		        this.uping = 1;
+		        this.$http.post('../uploadWords', foData,config).then(function (res) {
+		        	if(res.body.indexOf("ok")!=-1){
+		        		//alert("words OK!");		
+		        		layer.alert('发布成功', {
+							    skin: 'layui-layer-lan'
+							    ,closeBtn: 0
+							    ,anim: 6 //动画类型
+							  });
+						
+			    		this.getCompWords();					    		 
+			    		$("#wtit").val("");
+			    		$("#sidd").val("");
+			    		$("#cidd").val("");
+			    		$("#widd").val("");
+			    		$("#wcont").val("");
+			    		
+			         	//this.$options.methods.getWords.bind(this)();
+		        	}else{
+			    		alert("words sorry");
+			    	}
+		        },function(res){
+					  alert("suberror") 
+				 });	
+
+		},
+		likeInit(){
+			//alert("likeInit");
+			this.$http.post('../selectLikeAll',{cid:this.cid,sid:this.sid},{emulateJSON:true})
+			.then(function(res){
+					if(res.body.like){
+						this.seen3=true;
+					}else{
+						this.seen3=false;
+					}							
+					
+					},function(res){
+						alert("likeerror")
+					});
+		},
+		nolike(){
+			this.$http.post('../deleteLike',{cid:this.cid,sid:this.sid},{emulateJSON:true})
+			.then(function(res){
+					if(res.body.indexOf("ok")!=-1){
+						
+						this.seen3=false;
+					}else{
+						alert(res.body);
+						this.seen3=true;
+					}							
+					
+					},function(res){
+						alert("noerror")
+					});
+		},
+		ilike(){
+			this.$http.post('../insertLike',{cid:this.cid,sid:this.sid},{emulateJSON:true})
+			.then(function(res){
+					if(res.body.indexOf("ok")!=-1){
+						
+						this.seen3=true;
+					}else{
+						alert(res.body);
+						this.seen3=false;
+					}							
+					
+					},function(res){
+						alert("ilerror")
+					});
+		},
+		ChooseCom(st){
+			if(this.usernifo==null||this.usernifo==""||this.usernifo.choose==null){
+				if(confirm("请先登录，再选择企业专业!")){
+					location.href="login.html";
+				}
+				return;
+			}
+			var st1=st.split("-");
+			var pid=st1[0];
+			this.pname=st1[1];
+			this.$http.post('../InsertOrUpdateScores',{cid:this.cid,pid:pid,sid:this.sid,scid:this.scid},{emulateJSON:true})
+			.then(function(res){															
+						if(res.body.msg.indexOf("ok")!=-1){
+							this.usernifo.choose=res.body.choose;
+							this.usernifo.cname=this.cname;
+							this.usernifo.pname=this.pname;
+							//alert(this.usernifo.cname+" \ "+this.usernifo.pname);
+							this.cl("stuinfo",JSON.stringify(this.usernifo));
+			        		this.vueProList();
+			        		layer.msg("选择成功");
+						}else{
+							alert(res.body.msg);
+							$("#exampleModal").modal("hide");
+						}								
+					},function(res){
+						alert("cherror")
+					});
+			
+			
+		},
+		vueProList(){
+			//alert("ProList");
+			this.$http.post('../vueProListServlet',{cid:this.cid,pros:this.pros},{emulateJSON:true})
+			.then(function(res){	
+				
+					this.todos=res.body.ls;
+					
+					},function(res){
+						alert("proerror")
+					});
+		},
+		getUserDetail(){	
+			//alert("UserDetail");
+			this.$http.post('../vueUserDetailServlet',{cid:this.cid},{emulateJSON:true})
+			.then(function(res){
+						this.ls=res.body;
+						//alert(this.ls2[5].img);
+						
+					},function(res){
+						alert("uderror")
+					});					
+		},
+		cl(key,msg){
+			//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+			//判断当前浏览器是否支持HTML5，
+			if (window.localStorage) {
+				 //封装浏览器缓存 WebStrong，setItem类似setAttribute方法
+			    localStorage.setItem(key,msg);	
+			} else {
+				//封装Cookie
+			    Cookie.write(key,msg);	
+			}
+		}
+	}
+})
+
+			
+
+</script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

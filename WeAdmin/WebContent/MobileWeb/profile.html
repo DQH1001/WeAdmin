@@ -1,0 +1,598 @@
+<!DOCTYPE HTML><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/splash/splash-icon.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="images/splash/splash-icon-big.png">
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen.png" 	media="screen and (max-device-width: 320px)" />  
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen@2x.png" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" /> 
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen-six.png" media="(device-width: 375px)">
+<link rel="apple-touch-startup-image" href="images/splash/splash-screen-six-plus.png" media="(device-width: 414px)">
+<link rel="apple-touch-startup-image" sizes="640x1096" href="images/splash/splash-screen@3x.png" />
+<link rel="apple-touch-startup-image" sizes="1024x748" href="images/splash/splash-screen-ipad-landscape" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : landscape)" />
+<link rel="apple-touch-startup-image" sizes="768x1004" href="images/splash/splash-screen-ipad-portrait.png" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : portrait)" />
+<link rel="apple-touch-startup-image" sizes="1536x2008" href="images/splash/splash-screen-ipad-portrait-retina.png"   media="(device-width: 768px)	and (orientation: portrait)	and (-webkit-device-pixel-ratio: 2)"/>
+<link rel="apple-touch-startup-image" sizes="1496x2048" href="images/splash/splash-screen-ipad-landscape-retina.png"   media="(device-width: 768px)	and (orientation: landscape)	and (-webkit-device-pixel-ratio: 2)"/>
+
+<title>Profile</title>
+
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/style-responsive.css" rel="stylesheet">
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
+    
+  <link href="../css/layer.css" rel="stylesheet">
+<link href="styles/style.css"     		 rel="stylesheet" type="text/css">
+<link href="styles/framework.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/owl.theme.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/swipebox.css"		 rel="stylesheet" type="text/css">
+<link href="styles/font-awesome.css"	 rel="stylesheet" type="text/css">
+<link href="styles/animate.css"			 rel="stylesheet" type="text/css">
+<style type="text/css">
+.header-myMain{
+    float:left;
+    background-image:url(images/myMain.png);
+    width:70px;
+    height:15px;
+    background-size:70px 15px;
+    margin-top:22px;
+    margin-left:30px;
+}
+</style>
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/jqueryui.js"></script>
+<script type="text/javascript" src="scripts/framework.plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+</head>
+<body style="background:#ffffdd"> 
+
+<div id="preloader">
+	<div id="status">
+    	<p class="center-text">
+			Loading the content...
+            <em>Loading depends on your connection speed!</em>
+        </p>
+    </div>
+</div>
+    
+    
+<ul class="menu-top">
+    <li class="active-menu"><a href="index.html"><i class="fa fa-home"></i>主页<i class="fa fa-circle"></i></a></li>
+  
+    <li>
+        <a class="has-submenu" href="#"><i class="fa fa-files-o"></i>页面<i class="fa fa-plus"></i></a>
+        <ul class="submenu">
+            <li><a href="dynamic_table.html"><i class="fa fa-angle-right"></i>公司选择<i class="fa fa-circle"></i></a></li>
+            <li><a href="profile.html"><i class="fa fa-angle-right"></i>个人中心<i class="fa fa-circle"></i></a></li>
+            <li><a href="university.html"><i class="fa fa-angle-right"></i>校园风采<i class="fa fa-circle"></i></a></li>
+            
+        </ul>
+    </li>      
+    <li>
+        <a class="has-submenu" href="#"><i class="fa fa-mobile"></i>切换用户<i class="fa fa-plus"></i></a>
+        <ul class="submenu">
+            <li><a href="login.html"><i class="fa fa-angle-right"></i>登录<i class="fa fa-circle"></i></a></li>
+            <li><a href="registration.html"><i class="fa fa-angle-right"></i>注册<i class="fa fa-circle"></i></a></li>
+           
+        </ul>
+    </li>    
+    <li><a class="close-menu" href="#"><i class="fa fa-times"></i>Close<i class="fa fa-circle"></i></a></li>
+</ul>
+    
+<div class="header">
+    <a href="index.html" class="header-myMain"></a>
+    <a href="#" class="header-navigation show-navigation"><i class="fa fa-navicon"></i></a>
+</div>
+<div class="header-clear-big"></div>
+    
+        <div class="content" id="app">
+        <!-- 个人头像 -->
+        				<div>
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="profile-pic text-center" style="height: 250px;margin-top:10px;">
+                                        <!-- <img alt="" :src="slogo"> -->
+                                        
+                                        <form class="form-signin" id="stuForms" method="post" enctype="multipart/form-data" style="margin-top:10px;">
+                                        <input type="hidden" name="sidd" :value="sid">
+                                        
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            
+                                            <div class="fileupload-new thumbnail" style="width: 180px; height: 180px;border:none;">
+                                                <img :src="slogo" alt="" />
+                                            </div>
+                                            
+                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 180px; max-height: 180px; line-height: 20px;border:none;"></div>
+                                            <div>
+                                                   <span class="btn btn-default btn-file" type="hidden">
+                                                   		<span class="fileupload-new"><i class="fa fa-undo"></i>Change</span>
+                                                   		<span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                   		<input type="file" name="file1" class="default" />                                                   
+                                                   </span>
+                                                   <button @click="sub()" class="btn btn-danger" type="button">确认修改</button>
+                                                <!-- <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a> -->
+                                            </div>
+                                        
+                                        </div> 
+                                                                                                        
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ <!-- 个人资料 -->
+ <div class="content-heading">
+    <h4>个人信息</h4>
+    <p>Personal Info</p>
+    <i class="fa fa-star"></i>
+    <div class="overlay"></div>
+    <img src="images/pictures/3w.jpg" alt="img">
+</div>
+ 		<div class="container">
+            <div class="toggle-3">
+                <a class="deploy-toggle-3">
+               <span style="font-size:15px;font-weight:bold;font-family:'楷体';"> 我的基本信息</span>
+                <em><strong></strong></em></a>
+                <div class="toggle-content">
+                    				
+                    				<p>学号:{{sid}}</p>
+                    				<p>学生姓名:{{sname}}</p>
+                    				<p>班级:{{clname}}</p>
+                    				<p>性别:
+                    					<span v-if="ssex==1">男</span>
+                                        <span v-else>女</span>
+                                    </p>
+                    				<p>电话号码:{{stel}}</p>
+                    				<p>email:{{semail}}</p>
+                                    <p>现居地:{{scity}}</p>
+                                    <p>
+                                    <button type="button" class="button button-yellow center-button" @click="Changeifo()">编辑资料</button>             
+               						</p>
+                </div>
+            </div>
+        </div>
+   <!-- 个性签名 -->
+        <div class="container">
+            <div class="toggle-3">
+                <a class="deploy-toggle-3">
+               <span style="font-size:15px;font-weight:bold;font-family:'楷体';"> 我的个性签名</span>
+                <em><strong></strong></em></a>
+                <div class="toggle-content">
+                    				<div class="profile-desk">
+                                       <p>个性签名:{{signature}}</p>
+                                      
+                                        <p>
+                                           	个人描述:{{sresume}}
+                                        </p>
+                                        <p>
+                                        <button type="button" class="button button-yellow center-button" @click="Changeifo1()">修改资料</button>
+										</p>
+                                        
+                                    </div>
+                </div>
+            </div>
+        </div>
+        
+   <!-- 选择的公司及专业 -->
+   <div class="container">
+            <div class="toggle-3">
+                <a class="deploy-toggle-3">
+               <span style="font-size:15px;font-weight:bold;font-family:'楷体';"> 我的选择</span>
+                <em><strong></strong></em></a>
+                <div class="toggle-content">
+                    				<div class="profile-desk">
+                    				<a href="dynamic_table.html" v-if="cname!=''">
+                                       <p>公司:{{cname}}</p>
+                                        <p>专业:{{pname}}</p>
+                                        
+                                    </a>
+                                    <p v-else>
+                                    <a type='button' class='button button-yellow center-button' href="dynamic_table.html">去选择</a>
+                                    </p>
+                                        
+                                    </div>
+                </div>
+            </div>
+        </div>
+ <!-- 收藏的公司 -->
+   <div class="container">
+            <div class="toggle-3">
+                <a class="deploy-toggle-3">
+               <span style="font-size:15px;font-weight:bold;font-family:'楷体';"> 我的收藏</span>
+                <em><strong></strong></em></a>
+                <div class="toggle-content">
+                    				<div class="profile-desk">
+                    				
+                    			
+		                            
+		                                <div class="panel-body p-states" v-for="like in listMap">
+		                                <p>
+		                                	<a :href="'comp_details2.html?cid='+like.cid+'&pros='+like.pros">
+		                                        <span style="font-size:15px;font-weight:bold;font-family:'楷体';">{{like.cname}}</span>
+		                                    </a>
+		                                 </p>
+		                                </div>
+		                          	<p>
+		                            <a class='button button-yellow center-button' href="dynamic_table.html">去浏览</a>
+                    				</p>
+                    				
+                    				
+                                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="decoration"></div>
+<!-- 空间留言 -->
+<div class="content-heading">
+    <h4>记录每天的点点滴滴</h4>
+    <p>Everyday</p>
+    <i class="fa fa-star"></i>
+    <div class="overlay"></div>
+    <img src="images/pictures/3w.jpg" alt="img">
+</div>
+
+				<div class="row">
+                        <div>
+                            <div class="panel">
+                              <form id="stuForms1" method="post" enctype="multipart/form-data" style="margin-top:10px;">
+                              <input type="hidden" name="sidd" :value="sid">
+                                    <textarea id="txtarea" name="spftest" class="form-control input-lg p-text-area" rows="2" placeholder="Whats in your mind today?"></textarea>
+                               
+                                <footer class="panel-footer">
+                                    <button class="btn btn-post pull-right" type="button" @click="postwords()">Post</button>
+                                    <ul class="nav nav-pills p-option">
+                                        <li>
+                                            <a href="#"><i class="fa fa-user"></i></a>
+                                        </li>
+                                        
+                                        <li>
+	                                        <div>
+	                                   		<span class="btn btn-default btn-file" type="hidden">
+		                                        <span><i class="fa fa-camera"></i></span>
+		                                        <input id="UploadFile" type="file" name="file1" class="default" />                                                   
+	                                        </span>
+	                                        </div>
+	                                        <!-- <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 180px; line-height: 20px;border:none;"></div> -->
+                                        </li>
+                                        
+                                        <li>
+                                            <a href="#"><i class="fa  fa-location-arrow"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-meh-o"></i></a>
+                                        </li>
+                                    </ul>
+                                </footer>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+	<div class="notification-page" v-for="word in words">
+        <p class="notification-page-item">
+            <img :src="slogo" alt=""/>
+            <em>
+               {{sname}}<br>
+               发布于：{{word.spfdate}}<br>
+               {{word.spftest}}
+            </em>
+              <div class="album">
+                 <img width="100px" height="100px" :src="'../upload/'+word.spflogo" v-if="word.spflogo!=null&&word.spflogo!=''">
+             </div>
+        </p>
+        <div class="decoration hide-if-responsive"></div>
+    </div> 
+
+</div>
+
+
+<!-- Page Footer-->
+<div class="footer">
+    <div class="footer-socials half-bottom">
+        <a href="#" class="footer-facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="footer-twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="footer-google"><i class="fa fa-google-plus"></i></a>
+        <a href="#" class="footer-share show-share-bottom"><i class="fa fa-share-alt"></i></a>
+        <a href="#" class="footer-up"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <p class="center-text">Copyright 2015. All rights reserved.</p>
+</div>
+
+<!-- Share Elements-->
+<div class="share-bottom">
+    <h3>Share Page</h3>
+    <div class="share-socials-bottom">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.themeforest.net/">
+            <i class="fa fa-facebook facebook-color"></i>
+            Facebook
+        </a>
+        <a href="https://twitter.com/home?status=Check%20out%20ThemeForest%20http://www.themeforest.net">
+            <i class="fa fa-twitter twitter-color"></i>
+            Twitter
+        </a>
+        <a href="https://plus.google.com/share?url=http://www.themeforest.net">
+            <i class="fa fa-google-plus google-color"></i>
+            Google
+        </a>
+
+        <a href="https://pinterest.com/pin/create/button/?url=http://www.themeforest.net/&media=https://0.s3.envato.com/files/63790821/profile-image.jpg&description=Themes%20and%20Templates">
+            <i class="fa fa-pinterest-p pinterest-color"></i>
+            Pinterest
+        </a>
+        <a href="sms:">
+            <i class="fa fa-comment-o sms-color"></i>
+            Text
+        </a>
+        <a href="mailto:?&subject=Check this page out!&body=http://www.themeforest.net">
+            <i class="fa fa-envelope-o mail-color"></i>
+            Email
+        </a>
+    </div>
+    <a href="#" class="close-share-bottom">Close</a>
+</div>    
+<div class="menu-wrapper-background"></div>
+ 
+ 
+ <script type="text/javascript" src="../js/vue.js"></script>
+ <script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/layer.js"></script>
+<script type="text/javascript" src="../js/vue-resource.min.js"></script>
+<script src="../js/paragram.js"></script>
+<script type="text/javascript" src="../js/bootstrap-fileupload.min.js"></script>
+<script type="text/javascript">
+var app=new Vue({
+	el:"#app",
+	data:{
+		/* cid:'',
+		pros:'', */
+		slogo:'',
+		sname:'',
+		clname:'',
+		sid:'',
+		sdate:'',
+		ssex:'',
+		scity:'',
+		stel:'',
+		semail:'',
+		pname:'',
+		cname:'',
+		signature:'',
+		sresume:'',
+		usernifo:'',
+		seen:'',
+		listMap:[],
+		words:[]
+	}, 
+	mounted(){
+		this.getIndex();
+		//this.swiperInit();
+	},
+	methods:{
+		getIndex:function(){
+			this.getInit();
+			if(this.usernifo!=null&&this.usernifo!=""){
+				this.seen=true;
+				for(var i=0;i<this.usernifo.stumenus.length;i++){
+			  		$("#"+this.usernifo.stumenus[i]+"").hide();
+			  	}
+			}else{
+				this.seen=false;
+			}
+			this.getlikes();
+			this.getWord();
+			/* this.$http.post('vueComDetailServlet',{sid:this.usernifo.sid},{emulateJSON:true})
+			.then(function(res){
+				
+			}); */
+			
+		},
+		getInit(){
+			//HTML5和大多数浏览器兼容性问题了。
+			if(window.localStorage){
+				//读取HTML5中的缓存，key是deptlist，而且读取出来text格式，还需要JSON.p.. text转换为json格式
+				this.usernifo=JSON.parse(localStorage.getItem("stuinfo"));
+			}else{
+				this.usernifo=Cookie.read("stuinfo");
+			}
+			/* var Request=new Object();
+			Request=GetRequest();
+			this.cid=Request['cid'];
+			this.pros=Request['pros']; */
+			this.slogo="../upload/"+this.usernifo.slogo;
+			this.signature=this.usernifo.signature;
+			this.sresume=this.usernifo.sresume;
+			this.clname=this.usernifo.classes.clname;
+			this.sname=this.usernifo.sname;
+			this.sid=this.usernifo.sid;
+			this.sdate=this.usernifo.sdate;
+			this.ssex=this.usernifo.ssex;
+			this.scity=this.usernifo.scity;
+			this.stel=this.usernifo.stel;
+			this.semail=this.usernifo.semail;
+			this.cname=this.usernifo.cname;
+			this.pname=this.usernifo.pname;
+		},
+		getlikes(){
+			this.$http.post('../selectLikeAll',{cid:1,sid:this.sid},{emulateJSON:true})
+			.then(function(res){
+					this.listMap=res.body.listMap;
+					},function(res){
+						alert("error")
+					});
+		},
+		postwords(){
+			var foData=new FormData($("#stuForms1")[0]);			
+			 let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+		        this.uping = 1;
+		        this.$http.post('../insertPost', foData,config).then(function (res) {
+		        	if(res.body.indexOf("ok")!=-1){
+		        		this.getWord();
+		        		layer.msg('发布成功', {
+		        		    time: 1000, //1s后自动关闭		        		    
+		        		});
+		        		$("#UploadFile").replaceWith('<input id="UploadFile" type="file" name="file1" class="default" />');
+		        		$("#txtarea").val("");
+		        	}else{
+			    		alert("post sorry");
+			    	}
+		        },function(res){
+					  alert("error") 
+				 });	
+		},
+		sub(){
+			var foData=new FormData($("#stuForms")[0]);			
+			 let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+		        this.uping = 1;
+		        this.$http.post('../uploadStuSlogo', foData,config).then(function (res) {
+		        	if(res.body.msg.indexOf("ok")!=-1){
+		        		  layer.msg('更换头像成功', {
+		        			    time: 1000, //1s后自动关闭		        			    
+		        			  });			        		
+			    		this.usernifo.slogo=res.body.slogo;
+			    		this.slogo="../upload/"+this.usernifo.slogo;
+			    		this.cl("stuinfo",JSON.stringify(this.usernifo));
+		        	}else{
+			    		alert("words sorry");
+			    	}
+		        },function(res){
+					  alert("error") 
+				 });	
+
+		},
+		Changeifo(){
+			if(this.usernifo==null||this.usernifo==""||this.usernifo.choose==null){
+				if(confirm("请先登录，再填写资料")){
+					location.href="login.html";
+				}
+				return;
+			}												
+			 layer.open({
+				 type:2,
+				 area:['80%','65%'],
+				 fixed:true,//不固定
+				 maxmin:false,
+				 content:'sonStuInfo.html'
+			 })
+			
+		},
+		sendModel(){	
+			if(this.stel.length>11){
+				alert("手机号不合法!");
+				this.stel=this.usernifo.stel;
+				return;
+			}
+			this.$http.post('../updateStuInfo',{ssex:this.ssex,sid:this.usernifo.sid,stel:this.stel,semail:this.semail,scity:this.scity},
+					{emulateJSON:true}).then(function(res){
+					if(res.body.indexOf("ok")!=-1){
+						this.usernifo.ssex=this.ssex;						
+						this.usernifo.stel=this.stel;
+						this.usernifo.semail=this.semail;
+						this.usernifo.scity=this.scity;
+						this.cl("stuinfo",JSON.stringify(this.usernifo));
+						layer.alert('修改资料成功', {
+						    skin: 'layui-layer-lan'
+						    ,closeBtn: 0
+						    ,anim: 5 //动画类型
+						  });	
+					}else{						
+						alert(res.body);
+					}							
+					
+					},function(res){
+						alert("error")
+					});
+		},
+		getWord(){
+			this.$http.post('../getProfileWord',{sid:this.usernifo.sid},
+					{emulateJSON:true}).then(function(res){
+						this.words=res.body;
+					},function(res){
+						alert("error")
+					});
+		},
+		Changeifo1(){
+			if(this.usernifo==null||this.usernifo==""||this.usernifo.choose==null){
+				if(confirm("请先登录，再填写资料")){
+					location.href="login.html";
+				}
+				return;
+			}												
+			layer.open({
+				 type:2,
+				 area:['80%','30%'],
+				 fixed:true,//不固定
+				 maxmin:false,
+				 content:'sonStuInfo1.html'
+			 })
+			
+		},
+		sendModel1(){			
+			this.$http.post('../updateStuInfo1',{sid:this.usernifo.sid,sresume:this.sresume,signature:this.signature},
+					{emulateJSON:true}).then(function(res){
+					if(res.body.indexOf("ok")!=-1){
+						this.usernifo.signature=this.signature;						
+						this.usernifo.sresume=this.sresume;
+						this.cl("stuinfo",JSON.stringify(this.usernifo));
+						layer.alert('修改资料成功', {
+						    skin: 'layui-layer-molv'
+						    ,closeBtn: 0
+						    ,anim: 3 //动画类型
+						  });
+					}else{
+						alert(res.body);
+					}							
+					
+					},function(res){
+						alert("error")
+					});
+		},
+		cl(key,msg){
+			//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+			//判断当前浏览器是否支持HTML5，
+			if (window.localStorage) {
+				 //封装浏览器缓存 WebStrong，setItem类似setAttribute方法
+			    localStorage.setItem(key,msg);	
+			} else {
+				//封装Cookie
+			    Cookie.write(key,msg);	
+			}
+		},
+		/* gotoComDeail(){
+			location.href="comp_details2.html?cid="+this.cid+"&pros="+this.pros;
+		}, */
+		logout(){
+			if (window.localStorage) {
+				window.localStorage.removeItem("stuinfo");	
+			}
+		}
+		
+		
+	}
+})
+</script>
+   
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

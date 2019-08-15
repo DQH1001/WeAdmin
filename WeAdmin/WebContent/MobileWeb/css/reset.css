@@ -1,0 +1,119 @@
+html { 
+	font-family: "Helvetica Neue",Helvetica, sans-serif;
+	/*莪傑羌頵篏絨鎕篏12px*/
+	-webkit-text-size-adjust: none;/*100%/none 渇㊤篏紊у翫*/
+	/*a膈上ユ :active篌瓜膣藥莅ょ蕭篋*/
+	-webkit-tap-hightlight-color: transparent;
+	/*胼罩∽←筝*/
+	-webkit-user-select: none;
+	height: 100%;
+}
+body{
+	overflow-x:hidden;
+	height: 100%;
+	/*綣moblie臀蕁球辱羯綣合*/
+	-webkit-overflow-scrolling: touch;
+	font-size: 12px;
+	font-family: "Font-family";
+	overflow-x: hidden;
+	-webkit-text-size-adjust: none !important;
+}
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+a{
+	display: block;
+	width: 100%;
+	color: #333;
+	text-decoration: none;
+}
+img{
+	border: 0;
+	display: block;
+	width: 100%;
+	vertical-align: middle;
+}
+input{
+/*	-webkit-appearance: none;*/
+	outline: none;
+	border: none;
+}
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+.clearfix:after{
+	content:"";
+	display:block;
+	width:100%;
+	height:0;
+	clear:both;
+}
+li,ol{
+	list-style:none;
+}
+
+.sprite-icon{
+	display:inline-block;
+	background:url("../img/jd-sprites.png") no-repeat;
+	background-size:200px 200px;
+}
+a.line,.topline{
+	position: relative;/**/
+}
+a.line:after,.topline:after{
+	content: "";
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+.topline:after{
+	height: 1px;
+	width: 100%;
+	-webkit-transform: scaleY(0.5);/**/
+	transform: scaleY(0.5);/**/
+	border-top: 1px solid #ccc;
+}
+a.line:after{
+	height: 100%;
+	width: 1px;
+	border-right: 1px solid #ccc;
+	-webkit-transform: scaleX(0.5);/**/
+	transform: scaleX(0.5);/**/
+}
+a.addsty{
+	position: relative;
+}
+a.addsty:before{
+	content: "";
+	position: absolute;
+	left: -2px;
+	top: 0px;
+	height: 100%;
+	width: 1px;
+	border-right: 1px solid #ccc;
+	-webkit-transform: scaleX(0.5);/**/
+	transform: scaleX(0.5);/**/
+}
+@font-face {font-family: 'iconfont';
+    src: url('../iconfont/iconfont.eot'); /* IE9*/
+    src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../iconfont/iconfont.woff') format('woff'), /* chromefirefox */
+    url('../iconfont/iconfont.ttf') format('truetype'), /* chromefirefoxoperaSafari, Android, iOS 4.2+*/
+    url('../iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    }
+   h1,h2,h3,h4,h5,h6{
+   	font-weight: normal;
+   }

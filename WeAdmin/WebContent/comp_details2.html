@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Blog Details</title>
+  <link href="css/layer.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="js/swiper.min.css" />
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
+    
+  <!--   <script type="text/javascript" src="js/swiper.min.js"></script> -->
+
+
+    <style type="text/css">
+        .swiper-container{
+            width: 100%;
+            height: 400px;
+        }
+        video{
+        	object-fit:fill;
+        	width: 100%px;
+            height: 400px;
+        }
+    </style>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <div class="left-side sticky-left-side">
+
+        <!--logo and iconic logo start-->
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt=""></a>
+        </div>
+
+        <div class="logo-icon text-center">
+            <a href="index.html"><img src="images/logo_icon.png" alt=""></a>
+        </div>
+        <!--logo and iconic logo end-->
+
+
+        <div class="left-side-inner">
+
+            <!-- visible to small devices only -->
+            <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                <div class="media logged-user">
+                    <img alt="" src="images/photos/user-avatar.png" class="media-object">
+                    <div class="media-body">
+                        <h4><a href="#">John Doe</a></h4>
+                        <span>"Hello There..."</span>
+                    </div>
+                </div>
+
+                <h5 class="left-nav-title">Account Information</h5>
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                    <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+                    <li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+                </ul>
+            </div>
+
+            <!--sidebar nav start-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li id="main"><a href="dynamic_table.html"><i class="fa fa-home"></i> <span>主页</span></a></li>
+                <li id="profile"><a href="profile.html"><i class="fa fa-laptop"></i> <span>个人中心</span></a></li>
+               	<li id="login"><a href="login.html"><i class="fa fa-sign-in"></i> <span>登录</span></a></li>
+               	<li id="teacher"><a href="student_list.html"><i class="fa fa-laptop"></i> <span>教师管理</span></a></li>
+            </ul>
+            <!--sidebar nav end-->
+
+        </div>
+    </div>
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div class="main-content"  id="app1">
+
+        <!-- header section start-->
+        <div class="header-section">
+
+        <!--toggle button start-->
+        <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+        <!--toggle button end-->
+
+        <!--search start-->
+        <form class="searchform" action="index.html" method="post">
+            <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+        </form>
+        <!--search end-->
+
+        <!--notification menu start -->
+        <div class="menu-right">
+            <ul class="notification-menu">
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                        <i class="fa fa-tasks"></i>
+                        <span class="badge">8</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-head pull-right">
+                        <h5 class="title">You have 8 pending task</h5>
+                        <ul class="dropdown-list user-list">
+                            <li class="new">
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div>Database update</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div style="width: 40%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning">
+                                            <span class="">40%</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="new">
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div>Dashboard done</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div style="width: 90%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="90" role="progressbar" class="progress-bar progress-bar-success">
+                                            <span class="">90%</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div>Web Development</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-info">
+                                            <span class="">66% </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div>Mobile App</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div style="width: 33%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="33" role="progressbar" class="progress-bar progress-bar-danger">
+                                            <span class="">33% </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div>Issues fixed</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar">
+                                            <span class="">80% </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="new"><a href="">See All Pending Task</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge">5</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-head pull-right">
+                        <h5 class="title">You have 5 Mails </h5>
+                        <ul class="dropdown-list normal-list">
+                            <li class="new">
+                                <a href="">
+                                    <span class="thumb"><img src="images/photos/user1.png" alt="" /></span>
+                                        <span class="desc">
+                                          <span class="name">John Doe <span class="badge badge-success">new</span></span>
+                                          <span class="msg">Lorem ipsum dolor sit amet...</span>
+                                        </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="thumb"><img src="images/photos/user2.png" alt="" /></span>
+                                        <span class="desc">
+                                          <span class="name">Jonathan Smith</span>
+                                          <span class="msg">Lorem ipsum dolor sit amet...</span>
+                                        </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="thumb"><img src="images/photos/user3.png" alt="" /></span>
+                                        <span class="desc">
+                                          <span class="name">Jane Doe</span>
+                                          <span class="msg">Lorem ipsum dolor sit amet...</span>
+                                        </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="thumb"><img src="images/photos/user4.png" alt="" /></span>
+                                        <span class="desc">
+                                          <span class="name">Mark Henry</span>
+                                          <span class="msg">Lorem ipsum dolor sit amet...</span>
+                                        </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="thumb"><img src="images/photos/user5.png" alt="" /></span>
+                                        <span class="desc">
+                                          <span class="name">Jim Doe</span>
+                                          <span class="msg">Lorem ipsum dolor sit amet...</span>
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="new"><a href="">Read All Mails</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge">4</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-head pull-right">
+                        <h5 class="title">Notifications</h5>
+                        <ul class="dropdown-list normal-list">
+                            <li class="new">
+                                <a href="">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    <span class="name">Server #1 overloaded.  </span>
+                                    <em class="small">34 mins</em>
+                                </a>
+                            </li>
+                            <li class="new">
+                                <a href="">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    <span class="name">Server #3 overloaded.  </span>
+                                    <em class="small">1 hrs</em>
+                                </a>
+                            </li>
+                            <li class="new">
+                                <a href="">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    <span class="name">Server #5 overloaded.  </span>
+                                    <em class="small">4 hrs</em>
+                                </a>
+                            </li>
+                            <li class="new">
+                                <a href="">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    <span class="name">Server #31 overloaded.  </span>
+                                    <em class="small">4 hrs</em>
+                                </a>
+                            </li>
+                            <li class="new"><a href="">See All Notifications</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" v-if="seen">
+                        <img :src="slogo" alt="" />
+                        {{clname}}:{{sname}}
+                        <span class="caret"></span>
+                    </a>
+                    <a href="login.html" id="loginNone" class="btn btn-default dropdown-toggle" v-else>
+                        	登录/注册                   
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <li><a @click="profile()"><i class="fa fa-user"></i>  Profile</a></li>
+                        <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
+                        <li><a href="login.html" @click="logout()"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+               <!--  Blog Details <small>Subtext for header</small> -->
+               {{cname}}
+            </h3>
+            <!-- <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Extra Pages</a>
+                </li>
+                <li class="active">Blog Details </li>
+            </ul> -->
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+        <div class="row blog">
+        <div class="col-md-4">
+           
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="blog-post">
+                        <h3>专业详细</h3>
+                        <div class="media" v-for="items in todos">
+                            <a href="javascript:;" class="pull-left">
+                                <img width="81" height="81" :src="items.plogo">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="media-heading"><a href="javascript:;">{{items.pname}}</a></h5>
+                                <p>
+                                   	 所选人数：{{items.numbers}}。详情：{{items.pdetail}}
+                                </p>
+                            </div>
+                            <div align="right">
+                            	<a class="btn btn-danger btn-sm" 
+                            	@click="ChooseCom(items.pid+'-'+items.pname+'-'+items.plogo)" id="remove-all" >选择</a>
+                            	
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <!-- 模态框 -->
+             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span  aria-hidden="true">×</span>
+ 												</button>
+			                					<h4 class="modal-title" id="exampleModalLabel"></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                           <form >                                              
+                                        		<div class="form-group">  
+			                        				 <h3 class="color-terques" id="recipient-name">
+			                        				 <img id="message-clogo" width='35' height='40' :src="clogo" >
+			                        				 	<span id="message-cname">{{cname}}</span>
+			                        				 </h3>  
+			                                     </div>  
+			                                     <div class="form-group">  
+			                                   <!--   <img id="message-img" width='35' height='40' > -->
+			                        				 <h5 class="color-terques" id="message-plogo">
+				                        				
+			                        				 </h5>  
+			                                     </div>
+			                   					
+			                  					  <div class="form-group">  
+			                      					 	<input type="hidden" id="message-cid" :value="cid"/>
+			                       						<input type="hidden" id="message-pid" />
+			                  					  </div>
+			                  					  
+											</form>
+  									      </div>     
+                                                  <div class="modal-footer">
+                                        <button @click="sendModel()" type="button" style="width: 200px;" id="sendModel" class="btn btn-primary">Send message</button>
+			                			<button type="button" style="width: 100px;" class="btn btn-default" data-dismiss="modal">Close</button>  
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+            <!-- <div class="panel">
+                <div class="panel-body">
+                    <div class="blog-post">
+                        <h3>recent comments</h3>
+                        <ul>
+                            <li><a href="javascript:;"><i class="  fa fa-comments-o"></i> admin on Vestiblulum quis dolor </a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-comments-o"></i> admin on Nam sed arcu tellus</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-comments-o"></i> monster002 on Fringilla ut vel ipsum </a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-comments-o"></i> admin on Vestiblulum quis dolor sit</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+            
+            
+                    <div class="panel">
+                        <header class="panel-heading">
+                            	员工展示
+                            <!-- <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                             </span> -->
+                        </header>
+                        <div class="panel-body">
+                            <ul class="goal-progress">
+                                <li v-for="item in ls">
+                                    <div class="prog-avatar">
+                                        <img :src="item.ulogo" alt=""/>
+                                    </div>
+                                    <div class="details">
+                                        <div class="title">
+                                            <a href="#">{{item.uname}}</a> - {{item.urose}}
+                                        </div>
+                                        <div class="progress progress-xs"><!-- style="width:70%" -->
+                                            <div :class="item.color" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" :style="item.pcwidth">
+                                                <span class="">{{item.pc}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>                                
+                            </ul>
+                            <div class="text-center">
+                            	<button type="button" class="btn btn-danger" @click="nextUsers()">换一批</button>
+                            </div>
+                        </div>
+                    </div>
+               
+            
+            <!--  -->
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="blog-post">
+                        <h3>category</h3>
+                        <ul>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> Animals</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> Landscape</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> Portait</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> Wild Life</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> Video</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="blog-post">
+                        <h3>blog archive</h3>
+                        <ul>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> May 2013</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> April 2013</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> March 2013</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> February 2013</a></li>
+                            <li><a href="javascript:;"><i class="  fa fa-angle-right"></i> January 2013</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+        <div class="blog">
+        <div class="single-blog">
+        <div class="panel">
+            <div class="panel-body">
+                <!-- <h1 class="text-center mtop35"><a href="#">Neque porro quisquam est qui dolo rem ipsum quio</a></h1> -->
+                <h1 class="color-terques" align="center" id="recipient-name" >
+			          <img width='50' height='50' :src="clogo" >
+			          <span>{{cname}}</span>
+			    </h1> 
+                <!-- <p class="text-center auth-row">
+                    By <a href="#">Anthony Jones</a>   |   27 December 2014   | <a href="#">5 Comments</a>
+                </p> -->
+                <div class="swiper-container" v-if="seen2">
+                <!--   v-for="item in ls2" v-if="sw_flag&&!!banners.length"-->
+				    <div class="swiper-wrapper">
+				       <div class="swiper-slide" v-for="item in ls2"><img width="600px" hight="200px" :src="item.img"/></div>
+				       <!--  <div class="swiper-slide"><img width="790px" hight="200px" src="images/imglunbo/timg1.jpg"/></div>
+				        <div class="swiper-slide"><img width="790px" hight="200px" src="images/imglunbo/timg2.jpg"/></div>
+				        <div class="swiper-slide"><img width="790px" hight="200px" src="images/imglunbo/timg3.jpg"/></div>
+				        <div class="swiper-slide"><img width="790px" hight="200px" src="images/imglunbo/timg4.jpg"/></div>
+				        <div class="swiper-slide"><img width="790px" hight="200px" src="images/imglunbo/timg5.jpg"/></div>
+				        <div class="swiper-slide"><img width="790px" hight="200px" src="images/imglunbo/timg6.jpg"/></div> -->
+				    </div>
+				    <!-- 如果需要分页器 -->
+				    <div class="swiper-pagination"></div>
+				
+				    <!-- 如果需要导航按钮 -->
+				    <div class="swiper-button-prev"></div>
+				    <div class="swiper-button-next"></div>
+				
+				    <!-- 如果需要滚动条 -->
+				    <!-- <div class="swiper-scrollbar"></div> -->
+				</div>
+				 <video :src="cvideo" controls="controls" ishivideo="true" autoplay="true" isrotate="false" autoHide="true" v-else>
+				 </video>
+				<div style="margin-top: 20px;" id="comTxt">
+					sed ut per
+				</div>
+				
+				
+                <div class="blog-tags">
+                	<div v-if="seen3">
+	                	<span>取消收藏</span>
+	                    <img src="images/ok1.png" @click="nolike()">
+                    </div>
+                    <div v-else>
+	                    <span>喜欢就点个收藏吧</span>
+	                    <img src="images/no1.png" @click="ilike()">
+                    </div>
+                    <div class="pull-right tag-social">
+                        <a href="#" class="btn btn-share pull-right">Share</a>
+
+                        <ul class="pull-right">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body ">
+                <div class="media blog-cmnt">
+                    <a href="javascript:;" class="pull-left">
+                        <img alt="" src="images/blog/blog-avatar.jpg" class="media-object">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">jones</a>
+                        </h4>
+                        <p class="mp-less">
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body">
+                <h1 class="text-center cmnt-head">Comments</h1>
+                 <!-- 公司话题 -->
+                
+                <div class="media blog-cmnt" v-for="cw in CompWords" v-if="cw.whid==0">
+                    <a href="javascript:;" class="pull-left" >
+                        <img v-if="cw.wauthor=='s'" alt="" :src="cw.slogo" class="media-object">
+                         <img v-else alt="" :src="clogo" class="media-object">
+                    </a>
+                   
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                           <a href="#">{{cw.wtitle}}</a>
+                        </h4>
+                        <div class="bl-status">
+                            <span class="pull-left">回复count:{{cw.wcount}},{{cw.wdate}}</span>
+                            <a class="pull-right reply" @click="reply(cw.wid,cw.wtitle)">Reply</a>
+                        </div>
+                        <p class="mp-less">
+                           {{cw.wcontent}}
+                        </p>
+                        <p> <img width="50px" height="50px" :src="'upload/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!=''"></p>
+                        
+				                <!-- 公司留言 -->			                
+				                <div class="media blog-cmnt" v-for="word in CompWords" v-if="word.whid==cw.wid">
+				                    <a href="javascript:;" class="pull-left" >
+				                        <img v-if="word.wauthor=='s'" alt="" :src="word.slogo" class="media-object">
+				                         <img v-else alt="" :src="clogo" class="media-object">
+				                    </a>
+				                   
+				                    <div class="media-body">
+				                        <h4 class="media-heading">
+				                           <a href="#">{{word.wtitle}}</a>
+				                        </h4>
+				                        <div class="bl-status">
+				                            <span class="pull-left">回复时间：{{word.wdate}}</span>
+				                            <!-- <a href="#" class="pull-right reply" @click="">Reply</a> -->
+				                       		
+				                        </div>
+				                        <p class="mp-less">
+				                          {{word.wcontent}}
+				                        </p>
+				                        <p> <img width="50px" height="50px" :src="'upload/'+word.wimages" v-if="word.wimages!=null && word.wimages!=''"> </p>
+				                    </div>
+				                </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body">
+                <h1 class="text-center cmnt-head ">Leave a Comments</h1>
+                <p class="text-center fade-txt">If you want you can <a href="#">Cancel Reply</a></p>
+
+                <form class="form-signin" id="stuForms" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <input id="wtit" name="wtit" type="text" class="col-lg-12 form-control" placeholder="title *">
+                            <input id="sidd" name="sidd" type="hidden">
+                            <input id="cidd" name="cidd" type="hidden">
+                            <input id="widd" name="widd" type="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      
+                                   <div class="col-lg-12">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+            
+						              <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+						                  <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+						              </div>
+						              <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px;
+						               max-height: 150px; line-height: 20px;"></div>
+						              <div>
+						                <span class="btn btn-default btn-file">
+						                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+						                <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+						                <input type="file" name="file1" class="default" />
+						              	</span>
+						               <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">
+						               <i class="fa fa-trash"></i> Remove</a>
+						              </div>
+						            </div>
+                           			</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <textarea id="wcont" name="wcont" class=" form-control" rows="8" placeholder="回复"></textarea>
+                        </div>
+                    </div>
+                    <p>
+                        <button @click="sub()" class="btn btn-post-cmnt pull-right" type="button">Post Comment</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <footer class="">
+            2014 &copy; AdminEx by <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+        </footer>
+        <!--footer section end-->
+
+        
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+<script src="js/paragram.js"></script>
+
+
+
+<!--common scripts for all pages-->
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/vue-resource.min.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery-3.1.1.js"></script> -->
+<script type="text/javascript" src="js/swiper-3.4.1.jquery.min.js"></script>
+<!--file upload-->
+<script type="text/javascript" src="js/bootstrap-fileupload.min.js"></script>
+<script src="js/layer.js"></script>
+		<script type="text/javascript">
+		var app=new Vue({
+			el:"#app1",
+			data:{
+				cid:'',
+				pros:'',
+				pname:'',
+				slogo:'',
+				sname:'',
+				clogo:'',
+				cid:'',
+				clname:'',
+				cname:'',
+				todos:[],
+				usernifo:'',
+				ls2:[],
+				seen:'',
+				ls:'',
+				cvideo:'',
+				seen2:'',
+				CompWords:'',
+				wwid:'',
+				seen3:''
+			}, 
+			mounted(){
+				this.getIndex()			
+				
+			},
+			methods:{
+				getIndex:function(){
+					//alert("index");
+					//HTML5和大多数浏览器兼容性问题了。
+					
+					if(window.localStorage){
+						//读取HTML5中的缓存，key是deptlist，而且读取出来text格式，还需要JSON.p.. text转换为json格式
+						this.usernifo=JSON.parse(localStorage.getItem("stuinfo"));
+					}else{
+						this.usernifo=Cookie.read("stuinfo");
+					}
+					if(this.usernifo!=null&&this.usernifo!=""){
+						this.seen=true;
+						for(var i=0;i<this.usernifo.stumenus.length;i++){
+					  		$("#"+this.usernifo.stumenus[i]+"").hide();
+					  	}
+					}else{
+						this.seen=false;
+					}					
+					this.slogo="upload/"+this.usernifo.slogo;
+					this.clname=this.usernifo.classes.clname;
+					this.sname=this.usernifo.sname;					
+					var Request=new Object();
+					Request=GetRequest();
+					this.cid=Request['cid'];
+					this.pros=Request['pros'];
+					this.$nextTick(function(){									  
+						this.likeInit();							  
+					});					
+					this.$http.post('vueComDetailServlet',{cid:this.cid,pros:this.pros},{emulateJSON:true})
+					.then(function(res){
+								this.cid=res.body.mp.cid;
+								this.clogo=res.body.mp.clogo;									
+								this.todos=res.body.ls;
+								this.cname=res.body.mp.cname;
+								this.ls2=res.body.ls2;
+								//alert(this.ls2[5].img);
+								$.post(res.body.mp.ctext,null,function(data){
+									$("#comTxt").html(data);
+								});
+								if(res.body.mp.ctvchoose==1){
+									this.seen2=true;									
+								}else{
+									this.seen2=false;
+									this.cvideo=res.body.mp.cvideo;
+								}
+								
+															
+								this.$nextTick(function(){
+									   if(!!this.ls2.length){
+									   this.swiperInit();
+									   }
+									  });
+								
+							},function(res){
+								alert("indexerror")
+							});
+						this.$nextTick(function(){									  
+						   	this.getUserDetail();									  
+						});
+						this.$nextTick(function(){									  
+							this.getCompWords(); 								  
+						});
+						this.$nextTick(function(){									  
+							this.vueProList();								  
+						});
+						
+					
+					
+					
+				},
+				reply(wwid,wwtitle){
+					$("#wtit").val(wwtitle).focus();
+					$("#widd").val(wwid);
+					
+				},
+				sub(){
+					$("#cidd").val(this.cid);//cid
+					$("#sidd").val(this.usernifo.sid);
+					var foData=new FormData($("#stuForms")[0]);			
+					 let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+				        this.uping = 1;
+				        this.$http.post('uploadWords', foData,config).then(function (res) {
+				        	if(res.body.indexOf("ok")!=-1){
+				        		//alert("words OK!");		
+				        		layer.alert('发布成功', {
+									    skin: 'layui-layer-lan'
+									    ,closeBtn: 0
+									    ,anim: 6 //动画类型
+									  });
+								
+					    		this.getCompWords();					    		 
+					    		$("#wtit").val("");
+					    		$("#sidd").val("");
+					    		$("#cidd").val("");
+					    		$("#widd").val("");
+					    		$("#wcont").val("");
+					    		
+					         	//this.$options.methods.getWords.bind(this)();
+				        	}else{
+					    		alert("words sorry");
+					    	}
+				        },function(res){
+							  alert("suberror") 
+						 });	
+
+				},
+				getCompWords:function(){
+					//alert("CompWord");
+					this.$http.post('selectCompWordsBycid',{cid:this.cid},{emulateJSON:true})
+					.then(function(res){
+								this.CompWords=res.body;
+							},function(res){
+								alert("cwerror");
+							});
+					
+				},
+				getUserDetail:function(){	
+					//alert("UserDetail");
+					this.$http.post('vueUserDetailServlet',{cid:this.cid},{emulateJSON:true})
+					.then(function(res){
+								this.ls=res.body;
+								//alert(this.ls2[5].img);
+								
+							},function(res){
+								alert("uderror")
+							});					
+				},
+				nextUsers(){
+					this.getUserDetail();
+				},
+				swiperInit() {
+					var mySwiper = new Swiper ('.swiper-container', {
+					      // 滚动方向 horizontal/vertical
+					    direction: 'horizontal',
+					    // 自动播放
+					    autoplay:2000,
+					    // 是否循环播放
+					    loop: true,
+					    // 如果需要分页器（小圆点）
+					    // 是否需要分页器
+					    pagination: '.swiper-pagination',
+					    // 点击分页器是否切换到对应的图片 是 true 否 false
+					    paginationClickable:true,
+
+					    // 如果需要前进后退按钮
+					    nextButton: '.swiper-button-next',
+					    prevButton: '.swiper-button-prev',
+
+					     // 用户操作swiper之后，是否禁止autoplay。默认为true：停止。
+					    // 如果设置为false，用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay。
+					    // 操作包括触碰，拖动，点击pagination等。
+					    autoplayDisableOnInteraction:false,
+					  }) 
+					//swiper-container swiper-wrapper swiper-slide
+					 //var mySwiper = new Swiper('.swiper-container', {
+					  //pagination : '.swiper-pagination',
+					  //paginationType : 'bullets',
+					  //autoplay : 2000,
+					  // loop : true,
+					 //})
+					},
+				ChooseCom(st){
+					if(this.usernifo==null||this.usernifo==""||this.usernifo.choose==null){
+						if(confirm("请先登录，再选择企业专业!")){
+							location.href="login.html";
+						}
+						return;
+					}						
+					//var clogo=$("#imgCom").attr("src");
+					//var cid=$("#cmoid").html();
+					//var cname=$("#comName").html();
+					var st1=st.split("-");						
+					//pid pname plogo
+					/* $("#recipient-name").html("<img  width='75' height='70' src='"+
+				        		clogo+"'> "+cname) ;  */
+					this.pname=st1[1];
+					$("#message-plogo").html("<img  width='35' height='40' src='"+
+				        		st1[2]+"'> "+st1[1]) ;
+						
+						//modal.find('.modal-body #message-text').html(recipient) ; 	
+					$("#message-pid").val(st1[0]) ; 
+					 if(this.usernifo.choose=="no"){
+				        	$('.modal-title').text("确认选择该企业专业?");
+						}else{
+							$('.modal-title').text("确认修改当前该企业专业?");
+						}						
+					 $("#exampleModal").modal("show");
+					
+				},
+				cl(key,msg){
+					//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+					//判断当前浏览器是否支持HTML5，
+					if (window.localStorage) {
+						 //封装浏览器缓存 WebStrong，setItem类似setAttribute方法
+					    localStorage.setItem(key,msg);	
+					} else {
+						//封装Cookie
+					    Cookie.write(key,msg);	
+					}
+				}, 
+				sendModel(){
+					var cid=$("#message-cid").val();
+					var pid=$("#message-pid").val();
+					var sid=this.usernifo.sid;
+					var scid=this.usernifo.choose;
+					//alert(cid+" / "+pid+" / "+sid+" / "+scid);
+					this.$http.post('InsertOrUpdateScores',{cid:cid,pid:pid,sid:sid,scid:scid},{emulateJSON:true})
+					.then(function(res){															
+								if(res.body.msg.indexOf("ok")!=-1){
+									this.usernifo.choose=res.body.choose;
+									this.usernifo.cname=this.cname;
+									this.usernifo.pname=this.pname;
+									//alert(this.usernifo.cname+" \ "+this.usernifo.pname);
+									this.cl("stuinfo",JSON.stringify(this.usernifo));
+					        		$("#exampleModal").modal("hide");	
+					        		this.vueProList();
+					        		layer.msg("选择成功");
+								}else{
+									alert(res.body.msg);
+									$("#exampleModal").modal("hide");
+								}								
+							},function(res){
+								alert("cherror")
+							});
+					
+				},
+				vueProList(){
+					//alert("ProList");
+					this.$http.post('vueProListServlet',{cid:this.cid,pros:this.pros},{emulateJSON:true})
+					.then(function(res){	
+						
+							this.todos=res.body.ls;
+							
+							},function(res){
+								alert("proerror")
+							});
+				},
+				likeInit(){
+					//alert("likeInit");
+					this.$http.post('selectLikeAll',{cid:this.cid,sid:this.usernifo.sid},{emulateJSON:true})
+					.then(function(res){
+							if(res.body.like){
+								this.seen3=true;
+							}else{
+								this.seen3=false;
+							}							
+							
+							},function(res){
+								alert("likeerror")
+							});
+				},
+				nolike(){
+					this.$http.post('deleteLike',{cid:this.cid,sid:this.usernifo.sid},{emulateJSON:true})
+					.then(function(res){
+							if(res.body.indexOf("ok")!=-1){
+								//alert("取消收藏成功");
+								layer.alert('青山不改绿水长流,大爷再来！', {
+								  skin: 'layui-layer-molv' //样式类名
+								  ,closeBtn: 0
+								  ,anim: 1 //动画类型
+								});
+								this.seen3=false;
+							}else{
+								alert(res.body);
+								this.seen3=true;
+							}							
+							
+							},function(res){
+								alert("noerror")
+							});
+				},
+				ilike(){
+					this.$http.post('insertLike',{cid:this.cid,sid:this.usernifo.sid},{emulateJSON:true})
+					.then(function(res){
+							if(res.body.indexOf("ok")!=-1){
+								//alert("收藏成功");
+								  layer.alert('收藏成功', {
+									    skin: 'layui-layer-lan'
+									    ,closeBtn: 0
+									    ,anim: 4 //动画类型
+									  });
+								this.seen3=true;
+							}else{
+								alert(res.body);
+								this.seen3=false;
+							}							
+							
+							},function(res){
+								alert("ilerror")
+							});
+				},
+				profile(){
+					/* cid="+this.cid+"&pros="+this.pros */
+					location.href="profile.html?";
+				},
+				logout(){
+					if (window.localStorage) {
+						window.localStorage.removeItem("stuinfo");	
+					}
+				}
+			}
+		})
+		
+					
+		</script>
+</body>
+</html>

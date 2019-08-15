@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 5.针对所有实体类对象的映射配置文件
+ 映射
+namespace="com.java.entity":针对该包下的所以实体类对象映射配置文件   -->
+<mapper namespace="com.javaweb.mapper.ICompsMapper">
+
+
+	 <resultMap id="WordsResult" type="com.java.entity.Words">
+      <id column="wid" property="wid" jdbcType="INTEGER" javaType="Integer" />  
+       <result column="w_sid" property="w_sid" jdbcType="INTEGER" javaType="Integer" /> 
+       <result column="w_cid" property="w_cid" jdbcType="INTEGER" javaType="Integer" /> 
+       <result column="wcount" property="wcount" jdbcType="INTEGER" javaType="Integer" /> 
+       <result column="whid" property="whid" jdbcType="INTEGER" javaType="Integer" /> 
+     <result column="wtitle" property="wtitle" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="wcontent" property="wcontent" jdbcType="VARCHAR" javaType="string" />
+     <result column="wdate" property="wdate" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="wimages" property="wimages" jdbcType="VARCHAR" javaType="string"/>  
+      <result column="wtest" property="wtest" jdbcType="VARCHAR" javaType="string"/>      
+      <result column="wauthor" property="wauthor" jdbcType="VARCHAR" javaType="string"/>  
+   <association property="stu" javaType="com.java.entity.Student"
+    	       resultMap="StudentResult"/>
+     <association property="comp" javaType="com.java.entity.Comps"
+    	       resultMap="CompanyResult"/>
+    </resultMap>
+    
+    
+    <select id="selectCompWordsBycid" resultMap="WordsResult" parameterType="int">
+     	   SELECT w.*,s.*,c.* from words w,comps c,stus s WHERE w.w_cid=c.cid 
+				and w.w_sid=s.sid and w.w_cid=#{cid}
+    </select>
+ 	
+ 	<update id="updateCompWordsBywhid" parameterType="int">
+ 		update words set wcount=wcount+1 where wid=#{whid}
+ 	</update>
+ 	
+ 	<insert id="insertCompWords" parameterType="com.java.entity.Words">
+ 		insert into words value(null,#{wtitle},#{wcontent},now(),#{w_cid},#{w_sid},
+ 		#{wimages},null,"s",0,#{whid})
+ 	</insert>
+ 	
+</mapper>

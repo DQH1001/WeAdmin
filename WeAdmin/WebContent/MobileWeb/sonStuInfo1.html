@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link href="../css/style.css" rel="stylesheet">
+  <link href="../css/style-responsive.css" rel="stylesheet">
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
+    
+  <link href="../css/layer.css" rel="stylesheet">
+<link href="styles/style.css"     		 rel="stylesheet" type="text/css">
+<link href="styles/framework.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/owl.theme.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/swipebox.css"		 rel="stylesheet" type="text/css">
+<link href="styles/font-awesome.css"	 rel="stylesheet" type="text/css">
+<link href="styles/animate.css"			 rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/jqueryui.js"></script>
+<script type="text/javascript" src="scripts/framework.plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+</head>
+<body>
+<div id="app">
+                                <div class="panel-body" style="background:gray;height:450px;">
+                                    <ul class="p-info">
+                                        <li>
+                                            <div class="title">个性签名</div>
+                                            <div class="desk"><input type="text" v-model="signature"></div>
+                                        </li>
+                                        <li>
+                                            <div class="title">个人描述</div>
+                                            <div class="desk"><input type="text" v-model="sresume"></div>
+                                        </li>
+                                        
+                                        <a class='button button-yellow center-button' @click="Changeifo1()">确认修改</a>
+                                        <a class='button button-yellow center-button' @click="close()">关闭</a>
+                                    </ul>
+                                </div>
+                    				
+</div>
+
+ 
+ <script type="text/javascript" src="../js/vue.js"></script>
+ <script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/layer.js"></script>
+<script type="text/javascript" src="../js/vue-resource.min.js"></script>
+<script type="text/javascript">
+var app=new Vue({
+	el:"#app",
+	data:{
+		signature:'',
+		sresume:''
+	}, 
+	mounted(){
+		this.getIndex();
+		//this.swiperInit();
+	},
+	methods:{
+		getIndex(){
+			this.signature=window.parent.app.signature;
+			this.sresume=window.parent.app.sresume;
+			
+		},
+		Changeifo1(){
+			window.parent.app.signature=this.signature;
+			window.parent.app.sresume=this.sresume;
+			
+			 var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+             parent.layer.close(index);
+			window.parent.app.sendModel1();
+		},
+		close(){
+			var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            parent.layer.close(index);
+		}
+	}
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/wap.css">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>Registration</title>
+
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style-responsive.css" rel="stylesheet">
+ <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-fileupload.min.css" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    	.inp{
+    		height: 40px;
+    		width:250px;
+    	}
+    	#selectClass{
+    		width:250px;
+    		height:30px;
+    	}
+    	#wrap{
+    		margin-left: 60px;
+    	}
+    </style>
+</head>
+<body style="background:#ececec">
+  <div class="pet_mian" >
+    <div class="pet_head">
+      <header data-am-widget="header"
+          class="am-header am-header-default pet_head_block">
+        <div class="am-header-left am-header-nav ">
+          <a href="index.html" class="iconfont pet_head_jt_ico">&#xe601;</a>
+        </div>
+		<div align="center"><span style="color:white">registration</span></div>
+        <div class="am-header-right am-header-nav">
+          <a href="javascript:;" class="iconfont pet_head_gd_ico">&#xe600;</a>
+        </div>
+      </header>
+    </div>
+
+    <div class="pet_more_list">
+      <div class="pet_more_list_block">
+        <div class="iconfont pet_more_close">×</div>
+        <div class="pet_more_list_block">
+          <div class="pet_more_list_block_name">
+            <div class="pet_more_list_block_name_title">阅读 Read</div>
+            <a class="pet_more_list_block_line"> <i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe61e;</i>
+              <div class="pet_more_list_block_line_font">新鲜事</div>
+            </a>
+            <a class="pet_more_list_block_line"> <i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe607;</i>
+              <div class="pet_more_list_block_line_font">趣闻</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe62c;</i>
+              <div class="pet_more_list_block_line_font">阅读</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_mengzhuanti pet_more_list_block_line_ico">&#xe622;</i>
+              <div class="pet_more_list_block_line_font">专题</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_bk pet_more_list_block_line_ico">&#xe629;</i>
+              <div class="pet_more_list_block_line_font">订阅</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_wd pet_more_list_block_line_ico">&#xe602;</i>
+              <div class="pet_more_list_block_line_font">专栏</div>
+            </a>
+            <div class="pet_more_list_block_name_title pet_more_list_block_line_height">服务 Service</div>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_xinxianshi pet_more_list_block_line_ico">&#xe61e;</i>
+              <div class="pet_more_list_block_line_font">新鲜事</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_zhangzhishi pet_more_list_block_line_ico">&#xe607;</i>
+              <div class="pet_more_list_block_line_font">趣闻</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_kantuya pet_more_list_block_line_ico">&#xe62c;</i>
+              <div class="pet_more_list_block_line_font">阅读</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_mengzhuanti pet_more_list_block_line_ico">&#xe622;</i>
+              <div class="pet_more_list_block_line_font">专题</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_bk pet_more_list_block_line_ico">&#xe629;</i>
+              <div class="pet_more_list_block_line_font">订阅</div>
+            </a>
+            <a class="pet_more_list_block_line">
+              <i class="iconfont pet_nav_wd pet_more_list_block_line_ico">&#xe602;</i>
+              <div class="pet_more_list_block_line_font">专栏</div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="background:#65cea7;padding-top: 29px;">
+      
+				
+				<div >
+
+    <form class="form-signin" style="margin-top:25px;" action="login.html" id="stuForms" method="post" enctype="multipart/form-data">
+        <div class="form-signin-heading text-center">
+           	
+            <img src="../images/login-logo.png" alt=""/>
+        </div>
+
+
+        <div class="login-wrap">
+          
+            <p>请在下面输入您的帐户详细信息</p>
+            <input id="nameChecked" onblur="myfunction()" name="sname" type="text" autofocus="" placeholder="学生ID/Name" class="inp">
+            <span id="usn"></span><br>
+            
+            <input id="pwd1" type="password" name="spwd" onblur="reCheckPwd()" placeholder="Password" class="inp">
+            <span id="pwdshow1"></span><br>
+            
+            <input id="pwd2" type="password" onblur="reCheckPwd()" placeholder="Re-type Password" class="inp">
+            <span id="pwdshow2"></span><br>
+            
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+            
+              <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                  <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+              </div>
+              <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+              <div>
+                <span class="btn btn-default btn-file">
+                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                <input type="file" name="file1" class="default" />
+              	</span>
+               <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
+              </div>
+            </div>
+            
+           <!--  <div class="square single-row" id="wrap">
+            <input type="radio"  checked="checked" value="stu" class="chk" name="demo-radio">
+            <label>学生</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio"  value="tea" class="chk" name="demo-radio">
+            <label>教师</label>
+        	</div> -->
+        	
+        	<select id="selectClass" name="classid"></select> 
+        	
+            <label class="checkbox">
+                <input id="cbox" type="checkbox" value="agree this condition"> 我同意软通就业平台服务协议
+                <span id="cboxcheck"></span>
+            </label>
+            
+            <!-- 同步提交，设为submit，form表单中添加属性enctype="multipart/form-data"，脚本这边就完事了 -->
+            <span id="regshow"></span>
+            													<!-- submit -->
+            <button id="registration" onclick="cboxchecked()" type="button" class="btn btn-lg btn-login btn-block">
+                <i class="fa fa-check"></i>
+            </button>
+            
+			<a href="login1.html" class="">
+                 	返回登录
+            </a>
+            
+                
+           
+
+        </div>
+
+    </form>
+
+</div>
+				
+           
+
+        <div class="pet_article_footer_info">Copyright(c)2015 PetShow All Rights Reserved</div>
+      </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/amazeui.min.js"></script>
+    <script src="../js/jquery-3.1.1.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/modernizr.min.js"></script>
+<!--file upload-->
+<script type="text/javascript" src="../js/bootstrap-fileupload.min.js"></script>
+<script src="../js/jquery.form.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	getAjax();
+	//显示班级下拉框
+	function getAjax(){
+		$.ajax({
+			url:'../selectClassesAll',
+			method:'post',
+			dataType:'json',
+			success:function(data){
+				var s="";
+				$.each(data,function(i){
+					s+="<option value='"+data[i].clid+"'>"+data[i].clname+"</option>";
+				});
+				$("#selectClass").html(s);
+			},
+			error:function(){
+				alert("err");
+			}
+		});
+	}
+/* 	$(".chk").click(function(){
+		
+		if($(this).attr("value")=="stu"){
+			$("#nameChecked").attr("placeholder","学生ID/Name");
+			$("#selectClass").css("display","block");
+		}else if($(this).attr("value")=="tea"){
+			$("#nameChecked").attr("placeholder","教师ID/Name");
+			$("#selectClass").css("display","none");
+		}
+	});
+ */
+})
+//要把要存储HTML5缓存的数据放入缓存function
+function cl(key,msg){
+	//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+	//判断当前浏览器是否支持HTML5，
+	if (window.localStorage) {
+		 //封装浏览器缓存 WebStrong，setItem类似setAttribute方法
+	    localStorage.setItem(key,msg);	
+	} else {
+		//封装Cookie
+	    Cookie.write(key,msg);	
+	}
+} 
+	var namebool=0;
+	//用户名检测
+	function myfunction(){
+		$.ajax({
+			url:"../RegistrationChecked",
+			method:"post",
+			dataType:"json",
+			data:{"usn":$("#nameChecked").val(),
+				"chk":/* $('#wrap input[name="demo-radio"]:checked').val() */"stu"},
+			success:function(data){
+				//data为空值,说明sname一定不为空,只是数据库没找到封装了null,可以注册
+				if(data==null || data==""){
+					namebool=1;
+					$("#usn").html("<img src='../upload1/checkok.png' title='该用户名可以使用'/>");				
+				}else{
+					namebool=0;
+					//之前判断过data不为空,不用担心空指针
+					//data.sname为空,说明返回的是空对象,也就是sname为空(servlet中sname为空给实例化空对象),显示提示信息
+					if(data.sname==null||data.sname==""){	
+						$("#usn").html("<img src='../upload1/checknone.png' title='用户名不能为空'/>");						
+					//其他情况,也就是返回的为内部有值的对象,不能注册
+					}else{
+						$("#usn").html("<img src='../upload1/checknone.png' title='该用户名已被注册'/>");
+					}
+				}			
+			},
+			error:function(){
+			   	alert("eerr1");
+			}
+		});
+	}
+	var pwdbool=0;
+	//校验密码强度
+	 function checkPassWord(value){
+	  // 0： 表示第一个级别 1：表示第二个级别 2：表示第三个级别
+	  // 3： 表示第四个级别 4：表示第五个级别	  
+	  var modes = 0;
+	  if(value==null){//最初级别
+		  	return modes;
+		  }
+	  if(value.length < 6&&value.length > 1){//最初级别
+	  	modes++;
+	  }
+	  if(/\d/.test(value)){//如果用户输入的密码 包含了数字
+	   modes++;
+	  }
+	  if(/[a-z]/.test(value)){//如果用户输入的密码 包含了小写的a到z
+	   modes++;
+	  }
+	  if(/[A-Z]/.test(value)){//如果用户输入的密码 包含了大写的A到Z
+	   modes++;
+	  }
+	  if(/\W/.test(value)){//如果是非数字 字母 下划线
+	   modes++;
+	  }
+	  return modes;
+	 }
+	//俩次密码检测
+	function reCheckPwd(){
+		var p1=$("#pwd1").val();
+		var p2=$("#pwd2").val();		
+		var index=checkPassWord(p1);
+		$("#pwdshow1").css("color","green");
+		switch(index){
+		   case 0:
+			   $("#pwdshow1").html("<img src='../upload1/checknone.png' title='密码不能为空'/>");
+			   break;
+		   case 1:
+			   	$("#pwdshow1").html("弱");	
+			   	break;
+		   case 2:
+			   	$("#pwdshow1").html("较弱");	
+		    	break;
+		   case 3:
+			   	$("#pwdshow1").html("中等");	
+		    	break;
+		   case 4:
+			   	$("#pwdshow1").html("较强");	
+		    	break;
+		   case 5:
+			  	$("#pwdshow1").html("强");	
+		   		break;
+		  }
+		if(p2==null||p2==""){
+			$("#pwdshow2").html("<img src='../upload1/checknone.png' title='密码不能为空'/>");	
+			return;
+		}
+		if(p1==p2){
+			pwdbool=1;
+			$("#pwdshow2").html("<img src='../upload1/checkok.png' title='密码可以使用'/>");
+		}else{
+			pwdbool=0;
+			$("#pwdshow2").html("<img src='../upload1/checknone.png' title='俩次密码不一致'/>");
+		}
+		
+	}
+	function cboxchecked(){
+		if($("#cbox").is(':checked')){
+			$("#cboxcheck").html("");
+			if(namebool==1&&pwdbool==1){
+				$("#regshow").html("");
+				/* $.ajax({
+					url:"Registration",
+					method:"post",
+					dataType:"json",
+					data:{"usn":$("#nameChecked").val(),
+						"pas":$("#pwd1").val(),
+						"cla":$("#selectClass").val(),
+						"chk":$('#wrap input[name="demo-radio"]:checked').val()},
+					success:function(data){
+						cl("stuinfo",JSON.stringify(data));
+						//跳转主页
+						location.href="dynamic_table.html";						
+					},
+					error:function(){
+					   	alert("eerr1");
+					}
+				}); */
+				var foData=new FormData($("#stuForms")[0]);
+				$("#stuForms").ajaxSubmit({
+					url: "../stuRegistration",    //批量固定路径上传
+				    type: 'POST',  
+				    data: foData, 
+			        cache: false,  
+			        contentType: false,
+			        processData: false,  
+				    dataType: "text",   //返回的异步数据格式为不能json，必须是文本格式
+				    success:function(data){
+				    	//cl("stuinfo",JSON.stringify(data));
+						//跳转主页
+						//location.href="dynamic_table.html";	
+				    	location.href="login1.html";	
+					},
+				    error:function(){
+				    	alert("eerr9");
+				    }
+				});
+			}else{				
+				$("#regshow").html("请先正确填写注册信息");
+				$("#regshow").css("color","red");
+			}
+		}else{
+			$("#cboxcheck").html("请先同意此协议");
+			$("#cboxcheck").css("color","red");
+		}
+		
+	}
+	
+</script>
+</body>
+  </html>

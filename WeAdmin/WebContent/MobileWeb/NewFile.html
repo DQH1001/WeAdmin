@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>upload模块快速使用</title>
+  <!-- <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css" media="all"> -->
+   
+</head>
+<body style="backgroud:gray;">
+<button type="button" class="layui-btn" id="test1">
+  <i class="layui-icon">&#xe67c;</i>上传图片
+</button>
+
+<script src="https://www.layuicdn.com/layui/layui.js"></script>
+<script>
+layui.use('upload', function(){
+  var upload = layui.upload;
+   
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#test1' //绑定元素
+    ,url: '/upload/' //上传接口
+    ,done: function(res){
+      //上传完毕回调
+    }
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+});
+</script>
+
+<!-- 底部菜单栏 -->
+ <!--  <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/reset.css"> -->
+<!--  <div id="menu">
+	<ul>
+		
+		<li><a href="index.html" class="iconfont">
+			<font class="iconfont">&#xe612</font><span class="inco_txt">首页</span></a></li>
+		<li><a href="dynamic_table.html" >
+		
+		    <font class="iconfont">&#xe600</font><span class="inco_txt">公司列表</span></a></li>
+		<li><a href="university.html" >
+		    <font class="iconfont">&#xe63e</font><span class="inco_txt">校园风采</span></a></li>
+		<li><a href="profile.html" >
+		    <font class="iconfont">&#xe62e</font><span class="inco_txt">个人中心</span></a></li>
+	</ul>
+ </div> -->
+
+
+
+</body>
+</html>

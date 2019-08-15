@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 5.针对所有实体类对象的映射配置文件
+ 映射
+namespace="com.java.entity":针对该包下的所以实体类对象映射配置文件   -->
+<mapper namespace="com.javaweb.mapper.ICompsMapper">
+
+    <resultMap id="TypesResult" type="com.java.entity.Types">
+      <id column="tid" property="tid" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="tname" property="tname" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="test" property="test" jdbcType="VARCHAR" javaType="string"/>  
+    </resultMap>
+    
+   <resultMap id="CompanyResult" type="com.java.entity.Comps">
+      <id column="cid" property="cid" jdbcType="INTEGER" javaType="Integer" />
+      <result column="cname" property="cname" jdbcType="VARCHAR" javaType="string" />
+      <result column="cdate" property="cdate" jdbcType="VARCHAR" javaType="string" />
+       <result column="clogo" property="clogo" jdbcType="VARCHAR" javaType="string"/>  
+        <result column="ctext" property="ctext" jdbcType="VARCHAR" javaType="string" />
+      <result column="cvideo" property="cvideo" jdbcType="VARCHAR" javaType="string" />
+       <result column="ctvchoose" property="ctvchoose" jdbcType="INTEGER" javaType="Integer"/>  
+      <result column="c_tid" property="c_tid" jdbcType="INTEGER" javaType="Integer" />
+      <result column="ccheck" property="ccheck" jdbcType="INTEGER" javaType="Integer" />      
+      <result column="c_pros" property="c_pros" jdbcType="VARCHAR" javaType="string" />
+      <result column="cdetail" property="cdetail" jdbcType="VARCHAR" javaType="string" />
+      <result column="numbers" property="numbers" jdbcType="INTEGER" javaType="Integer" />
+      <result column="pros" property="pros" jdbcType="VARCHAR" javaType="string" />
+       <result column="cimgs" property="cimgs" jdbcType="VARCHAR" javaType="string" />
+      <association property="type" javaType="com.java.entity.Types"
+    	       resultMap="TypesResult"/>       
+    </resultMap>
+    
+    <resultMap id="UsersResult" type="com.java.entity.Users">
+      <id column="uid" property="uid" jdbcType="INTEGER" javaType="Integer" />
+      <result column="uname" property="uname" jdbcType="VARCHAR" javaType="string" />
+      <result column="udate" property="udate" jdbcType="VARCHAR" javaType="string" />
+       <result column="ulogo" property="ulogo" jdbcType="VARCHAR" javaType="string"/>  
+      <result column="u_cid" property="u_cid" jdbcType="INTEGER" javaType="Integer" />   
+      <result column="pnum" property="pnum" jdbcType="INTEGER" javaType="Integer" />      
+      <result column="cnum" property="cnum" jdbcType="INTEGER" javaType="Integer" />         
+      <result column="u_pros" property="u_pros" jdbcType="VARCHAR" javaType="string" />
+      <result column="upwd" property="upwd" jdbcType="VARCHAR" javaType="string" />
+      <result column="urose" property="urose" jdbcType="VARCHAR" javaType="string" />
+    </resultMap>
+    
+	 <resultMap id="ProjectsResult" type="com.java.entity.Projects">
+      <id column="pid" property="pid" jdbcType="INTEGER" javaType="Integer" />  
+      <result column="numbers" property="numbers" jdbcType="INTEGER" javaType="Integer" />  
+     <result column="pname" property="pname" jdbcType="VARCHAR" javaType="string"/>  
+      <result column="plogo" property="plogo" jdbcType="VARCHAR" javaType="string"/>  
+     <result column="pdetail" property="pdetail" jdbcType="VARCHAR" javaType="string" />
+     <result column="ptest" property="ptest" jdbcType="VARCHAR" javaType="string"/>  
+    </resultMap>
+      
+      <update id="updateNoCheckCompsBycid" parameterType="int">
+      	update comps set ccheck=1 where cid=#{cid}
+      </update>
+      
+      <select id="selectNoCheckCompsAll" resultMap="CompanyResult">
+     	select c.*,(select count(*) from scores where s_cid=c.cid) as numbers,
+     	(select GROUP_CONCAT(pname SEPARATOR ',') as name from projects where FIND_IN_SET(pid,c.c_pros))
+     	as pros from comps c where c.ccheck=0
+     	<!-- order by c.cdate LIMIT #{currentPage},#{pageSize} -->
+    </select> 
+      
+      <select id="selectCompsAll" resultMap="CompanyResult">
+     	select c.* from comps c where c.ccheck=1
+     	<!-- order by c.cdate LIMIT #{currentPage},#{pageSize} -->
+    </select> 
+      
+    <!-- 根据cid查询该公司员工负责专业被选人数以及公司总体被选人数 ,随机抽取五个人展示-->
+     <select id="selectUsersBycid" resultMap="UsersResult" parameterType="int">
+		    SELECT u.*,(SELECT count(scid) from scores where FIND_IN_SET(s_pid,u.u_pros) and s_cid=#{cid}) as pnum,
+		(SELECT count(scid) from scores where s_cid=#{cid}) as cnum
+		from users u WHERE u.u_cid=#{cid} Order By rand() Limit 5
+     </select>  
+     
+    <select id="selectNumsAndPros" resultMap="CompanyResult">
+     	select c.clogo,c.cid,c.cname,c.c_pros,c.cdetail,(select count(*) from scores where s_cid=c.cid) as numbers,
+     	(select GROUP_CONCAT(pname SEPARATOR ',') as name from projects where FIND_IN_SET(pid,c.c_pros))
+     	as pros from comps c where c.ccheck=1
+     	<!-- order by c.cdate LIMIT #{currentPage},#{pageSize} -->
+    </select>  
+    
+    <select id="selectProjectsByCid" resultMap="ProjectsResult" parameterType="com.java.entity.Comps">
+     	select p.*, (select count(*) from scores where s_pid=p.pid and s_cid=#{cid}) 
+		as numbers from projects p where FIND_IN_SET(p.pid,#{c_pros})
+    </select>  
+    
+     <select id="selectComCid"  resultMap="CompanyResult" parameterType="int">
+     	select * from comps where cid=#{cid} and ccheck=1
+    </select> 
+     <select id="selectNearlyComps" resultMap="CompanyResult" parameterType="com.java.entity.Comps">
+    	select c.clogo,c.cid,c.c_pros,c.cdetail,c.cname,(SELECT COUNT(*) from scores where s_cid=c.cid) as numbers,
+		(SELECT GROUP_CONCAT(pname SEPARATOR ',') as pnames from projects where FIND_IN_SET(pid,c.c_pros))
+ 		as pros from comps c where (SELECT COUNT(*) from scores where s_cid=c.cid)>#{numbers} 
+		<if test="cid!=0">
+			and c.cid=#{cid} 
+		</if>
+		<if test="cid==0">
+			<if test="cname  neq null and cname neq ''">
+				and c.cname LIKE #{cname}  
+			</if>
+			<if test="c_pros neq null and c_pros neq ''">
+				AND c.c_pros like #{c_pros}   
+			</if>
+		</if>
+		and c.ccheck=1
+    </select>  
+     
+     <select id="selectProjectsAll" resultMap="ProjectsResult">
+     	select * from projects
+    </select> 
+</mapper>
