@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -18,11 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.dao.MobileModel;
+import com.javaweb.mapper.ICompsMapper;
+import com.javaweb.mybatis.DBTools;
 
 @Controller("mobileController")
 @RequestMapping("/mobile")
 public class MobileController {
-	
+	private SqlSession sess=null;
+	private ICompsMapper cm=null;
 	@Autowired
 	private MobileModel mm;
 	
@@ -30,7 +34,8 @@ public class MobileController {
 	 * public void setMm(MobileModel mm) { this.mm = mm; }
 	 */
 	public MobileController() {
-		System.out.println("bbbbb");
+		sess=DBTools.getSession();
+		cm=sess.getMapper(ICompsMapper.class);
 	}
 	/*
 	 * public void setMm(@Qualifier("mobileModel")MobileModel mm) { this.mm=mm; }
