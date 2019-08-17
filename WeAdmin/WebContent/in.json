@@ -1,7 +1,7 @@
-[{"infoid":90,"uname":"jerry","iattendance":"78%"},
-{"infoid":90,"uname":"peter","iattendance":"79%"},
-{"infoid":54,"uname":"peter","iattendance":"81.48%"},
-{"infoid":78,"uname":"peter","iattendance":"69%"},
-{"infoid":56,"uname":"peter","iattendance":"69%"},
-{"infoid":45,"uname":"peter","iattendance":"59%"},
-{"infoid":90,"uname":"jerry","iattendance":"84%"}]
+[{"infoid":90,"uname":"苹果公司","iattendance":"78"},
+{"infoid":90,"uname":"华为公司","iattendance":"79"},
+{"infoid":54,"uname":"腾讯qq","iattendance":"81"},
+{"infoid":78,"uname":"联合利华","iattendance":"69"},
+{"infoid":56,"uname":"阿里巴巴","iattendance":"69"},
+{"infoid":45,"uname":"百度","iattendance":"59"},
+{"infoid":90,"uname":"百事可乐","iattendance":"84"}]

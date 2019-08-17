@@ -186,7 +186,7 @@ public class ExportServlet extends HttpServlet {
            
 
            HSSFCellStyle cellStyle = wb.createCellStyle();
-           FileOutputStream fout = new FileOutputStream("C:\\Users\\11040\\Documents\\Tencent Files\\1104029432\\FileRecv/Members.xls");
+           FileOutputStream fout = new FileOutputStream("C:\\eclipse-workplace/Members.xls");
            wb.write(fout);                                   //将响应流输入到Excel表格中
 //           //fout.flush();
            fout.close();

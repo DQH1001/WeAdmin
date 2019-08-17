@@ -32,5 +32,12 @@ public class MobileModel {
 		ls2.add(map2);
 		return ls2;
 	}
+
+
+
+	public Map<String, Object> yzTable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

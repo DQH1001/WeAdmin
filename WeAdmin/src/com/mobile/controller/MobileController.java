@@ -40,7 +40,7 @@ public class MobileController {
 	/*
 	 * public void setMm(@Qualifier("mobileModel")MobileModel mm) { this.mm=mm; }
 	 */
-	//mobile/swiper
+	//轮播图函数，前台未使用，只做springmvc测试
 	@RequestMapping(value="/swiper")
 	@ResponseBody
 	public List<Map<String,Object>> ImageSwiper(HttpServletRequest req) {
@@ -54,6 +54,20 @@ public class MobileController {
 			return null;
 		}
 		
+	}
+	
+	@RequestMapping(value="/yuanzhangTable")
+	@ResponseBody
+	public Map<String, Object> yzTable(HttpServletRequest req) {
+		try {
+			req.setCharacterEncoding("utf-8");
+			Map<String, Object> ma=this.mm.yzTable();
+			System.out.println("ssi:"+ma.size());			
+			return ma;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}		
 	}
 
 }
