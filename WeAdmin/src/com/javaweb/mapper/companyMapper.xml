@@ -18,6 +18,7 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
        <result column="clogo" property="clogo" jdbcType="VARCHAR" javaType="string"/>  
         <result column="ctext" property="ctext" jdbcType="VARCHAR" javaType="string" />
       <result column="cvideo" property="cvideo" jdbcType="VARCHAR" javaType="string" />
+       <result column="cusername" property="cusername" jdbcType="VARCHAR" javaType="string" />
        <result column="ctvchoose" property="ctvchoose" jdbcType="INTEGER" javaType="Integer"/>  
       <result column="c_tid" property="c_tid" jdbcType="INTEGER" javaType="Integer" />
       <result column="ccheck" property="ccheck" jdbcType="INTEGER" javaType="Integer" />      

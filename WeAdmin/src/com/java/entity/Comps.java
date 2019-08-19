@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Comps {
 	private int cid=0,c_tid,numbers=-1,ctvchoose,ccheck;
-	private String cname,cdate,c_pros,cdetail,pros,clogo,cimgs,ctext,cvideo;
+	private String cname,cdate,c_pros,cdetail,pros,clogo,cimgs,ctext,cvideo,cusername;
 	private Types type;
 	private int currentPage=0,pageSize=5;
 //	private List<Projects> listPro=null;
@@ -40,6 +40,14 @@ public class Comps {
 	
 	public int getNumbers() {
 		return numbers;
+	}
+
+	public String getCusername() {
+		return cusername;
+	}
+
+	public void setCusername(String cusername) {
+		this.cusername = cusername;
 	}
 
 	public int getCcheck() {
