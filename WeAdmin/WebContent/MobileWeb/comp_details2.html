@@ -3,7 +3,10 @@
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+ <meta name="site" content="content site">
+  <meta name="Site" content="content Site">
+  <meta name="title" content="content title">
+  <meta name="Title" content="content Title">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/splash/splash-icon.png">
 <link rel="apple-touch-icon-precomposed" sizes="180x180" href="images/splash/splash-icon-big.png">
 <link rel="apple-touch-startup-image" href="images/splash/splash-screen.png" 	media="screen and (max-device-width: 320px)" />  
@@ -29,6 +32,8 @@
 <link href="styles/swipebox.css"		 rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.css"	 rel="stylesheet" type="text/css">
 <link href="styles/animate.css"			 rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="dist/css/share.min.css">
     <!--file upload-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
   <style type="text/css">
@@ -97,6 +102,9 @@
             <div id="comTxt">
 					sed ut per
 			</div>
+			
+		      <div class="social-share" data-sites="weibo, qzone,qq,wechat"></div>
+		   
 				<div v-if="seen3" style="margin-left:92%;">
 		          	 <img src="../images/ok1.png" style="width:30px;height:30px;" @click="nolike()">
 	            </div>
@@ -301,7 +309,7 @@
 </div>
 
 
-  
+  <script src="dist/js/jquery.share.min.js"></script>
 <script type="text/javascript" src="../js/vue.js"></script>
  <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/layer.js"></script>
