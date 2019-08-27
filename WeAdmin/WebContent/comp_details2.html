@@ -578,7 +578,8 @@
                         <p class="mp-less">
                            {{cw.wcontent}}
                         </p>
-                        <p> <img width="50px" height="50px" :src="'upload/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!=''"></p>
+                        <p> <img width="50px" height="50px" :src="'upload/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!='' && cw.wauthor=='s'">
+                        <img width="50px" height="50px" :src="'../Comps/upload/comps/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!='' && cw.wauthor=='c'"></p>
                         
 				                <!-- 公司留言 -->			                
 				                <div class="media blog-cmnt" v-for="word in CompWords" v-if="word.whid==cw.wid">
@@ -599,7 +600,9 @@
 				                        <p class="mp-less">
 				                          {{word.wcontent}}
 				                        </p>
-				                        <p> <img width="50px" height="50px" :src="'upload/'+word.wimages" v-if="word.wimages!=null && word.wimages!=''"> </p>
+				                        <p> <img width="50px" height="50px" :src="'upload/'+word.wimages" v-if="word.wimages!=null && word.wimages!='' && word.wauthor=='s'">
+				                        <img width="50px" height="50px" :src="'../Comps/upload/comps/'+word.wimages" v-if="word.wimages!=null && word.wimages!='' && word.wauthor=='c'">
+				                         </p>
 				                    </div>
 				                </div>
                     </div>

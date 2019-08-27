@@ -61,7 +61,7 @@ public class uploadWords extends HttpServlet {
 				int cidd=Integer.valueOf(su.getRequest().getParameter("cidd"));
 				String widd=su.getRequest().getParameter("widd");
 				System.out.println(wtit+" / "+wcont+" / "+sidd+" / "+cidd+" / "+widd);
-				String uploadFile=request.getRealPath("upload");
+				String uploadFile=request.getRealPath("upload/");
 				System.out.println(uploadFile);
 				File upfile=new File(uploadFile);
 				if(!upfile.exists()) {

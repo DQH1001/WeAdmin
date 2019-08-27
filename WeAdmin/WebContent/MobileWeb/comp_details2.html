@@ -185,7 +185,8 @@
                  
                
                 <div class="album" style="margin-left:120px;">            
-                <img width="50px" height="50px" :src="'../upload/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!=''">
+                <img width="50px" height="50px" :src="'../upload/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!='' && cw.wauthor=='s'">
+                <img width="50px" height="50px" :src="'../../Comps/upload/comps/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!='' && cw.wauthor=='c'">
            		</div>
             </p>
             		
@@ -198,7 +199,8 @@
 			                <em><br><span class="pull-left">回复时间：{{word.wdate}}<br>回复内容：{{word.wcontent}}</span></em>
 			                
 			                <div class="album">
-				            <img width="50px" height="50px" :src="'../upload/'+word.wimages" v-if="word.wimages!=null && word.wimages!=''">
+				            <img width="50px" height="50px" :src="'../upload/'+word.wimages" v-if="word.wimages!=null && word.wimages!='' && word.wauthor=='s'">
+				             <img width="50px" height="50px" :src="'../../Comps/upload/comps/'+word.wimages" v-if="word.wimages!=null && word.wimages!='' && word.wauthor=='c'">
 			            	</div>
 			            </p>
 			            <div class="thumb-clear"></div>
