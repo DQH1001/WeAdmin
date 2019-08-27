@@ -1,1 +1,1 @@
-})(typeof exports !== 'undefined' ? exports : ODS);
+(typeof exports !== 'undefined' ? exports : ODS);
