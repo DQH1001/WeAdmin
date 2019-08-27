@@ -434,7 +434,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Excel Upload Users</h4>
+                                            <h4 class="modal-title">批量添加</h4>
                                         </div>
                                         <div class="modal-body">
                                             <form action="#" class="form-horizontal " 
@@ -442,7 +442,7 @@
                                                
                                                
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4">Excel Users:</label>
+                                                    <label class="control-label col-md-4">选择文件:</label>
                                                     <div class="col-md-6">
                                                         <div class="input-group input-large custom-date-range" data-date="13/07/2013" data-date-format="mm/dd/yyyy">
                                                            <input type="file" onclick="inputFile()" value="inputExcel"  
@@ -455,12 +455,13 @@
                                         </div>
                                         <div class="modal-footer">
                                          
-                                        <button data-dismiss="modal"  onclick="inputFile1()" class="btn btn-primary" id="insertButtonExcel" type="button">Upload</button>
+                                        <button data-dismiss="modal" onclick="inputFile1()" class="btn btn-primary" id="insertButtonExcel" type="button">Upload</button>
                                             <button data-dismiss="modal" class="btn btn-primary" type="button">Close</button>
                                         </div>
                                     </div>
                                 </div>    
-                         </div>           
+                         </div>
+       
                             <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" 
                                     aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -1287,124 +1288,122 @@ function exportExcel(){
 
 
 
-var X = XLSX;
-	//执行上传
-	function inputFile1(){
-		var deptlist=null;
-		if(window.localStorage){
-			deptlist=JSON.parse(localStorage.getItem("excellist"));
-		}else{
-			deptlist=Cookie.read("excellist");
-		}	
-		alert("ls:"+deptlist)
-		//poi是二进制上传， 而当前ui不是二进制上传，还是文本的参数模式
-		$.ajax({
-		    url: "excelStus",    //请求的url地址，获取全部roles职务的名称
-		    dataType: "text",  
-		    //async: true, //请求是否异步，默认为异步，这也是ajax重要特性
-		    type: "post",   //请求方式，默认post	
-		    //成功获取异步提交的参数执行的方法，req是返回的异步数据，类型是非常不固定
-	//{"UCname":usn,"UPwd":pwd,"URid":rrole,"USex":sex,"UTel":tel,"UEmail":email},
-		    data:{"formdata":deptlist},
-		    success:function(data) {
-		    	alert(data+" //data");
-		   		   				
-		    },		   
-		    error:function() {
-		        //请求出错处理
-		        alert("error99");
-		    }
-		});	
-	}
-	
-	//点击<input type=file>表单:执行获取Excel并且转换json，存入缓存
-	function inputFile(){
-	// <input type="file" onclick="inputFile()" name="xlfile" id="xlf" />
-	    var xlf = document.getElementById('xlf');
-		xlf.type="file";	
-		//alert("ff: "+xlf.addEventListener);
-		//当<input type="file">被点击的时候，创建的一个监听事件，xlf.addEventListener==true的时候说明该表单被点击了
-		//可以视为是 onchage操作，然后触发的是方法是handleFile()方法
-	    if(xlf.addEventListener) {
-	    	xlf.addEventListener('change', handleFile, false);
-	    }else{
-	    	alert("error5");
-	    }	
-	}
-	function ab2str(data) {
-		var o = "", l = 0, w = 10240;
-		for(; l<data.byteLength/w; ++l) o+=String.fromCharCode.apply(null,new Uint16Array(data.slice(l*w,l*w+w)));
-		o+=String.fromCharCode.apply(null, new Uint16Array(data.slice(l*w)));
-		return o;
-	}
-	function s2ab(s) {
-		var b = new ArrayBuffer(s.length*2), v = new Uint16Array(b);
-		for (var i=0; i != s.length; ++i) v[i] = s.charCodeAt(i);
-		return [v, b];
-	}
-	function xw_xfer(data, cb) {
-		var worker = new Worker('js/xlsx/xlsxworker2.js');//rABS ? XW.rABS : XW.norABS
-		worker.onmessage = function(e) {
-			switch(e.data.t) {
-				case 'ready': break;
-				case 'e': console.error(e.data.d); break;
-				default: xx=ab2str(e.data).replace(/\n/g,"\\n").replace(/\r/g,"\\r"); 
-				//console.log("done"); 
-				cb(JSON.parse(xx)); break;
-			}
-		};	
-			var val = s2ab(data);
-			worker.postMessage(val[1], [val[1]]);	
-	}
-	function to_csv(workbook) {
-		//var result = [];
-		//workbook.SheetNames.forEach(function(sheetName) {
-			//var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
-			//if(csv.length > 0){
-				//result.push("SHEET: " + sheetName);					
-				//result.push(csv);
-				//result.push("+");
-			//}
-		//});
-		var result = {};
-		workbook.SheetNames.forEach(function(sheetName) {
-			var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-			if(roa.length > 0){
-				result[sheetName] = roa;
-			}
-		});
-		//out.innerText =result.join("\n");
-		var value=JSON.stringify(result, 2, 2);
-		if (window.localStorage) {
-			 //封装浏览器缓存 WebStrong，setItem类似setAttribute方法
-		    localStorage.setItem("excellist",JSON.stringify(value));	
-		} else {
-			//封装Cookie
-		    Cookie.write("excellist",JSON.stringify(value));	
-		}
-		//ecl=JSON.stringify(value);
-	     //JSON.stringify(
-		//alert(value);	
-	}
-	//当导入的excel 表单点击的时候触发的function方法  参数e，是导入excel文件的对象，也就是 ttt.xlsx
-	function handleFile(e) {
-		//alert("hand:"+e);
-		//获取点击的文件对象 ttt.xlsx
-		var files = e.target.files;
-		//获取文件中的第一个Sheet1，以下都是脚本操作文件流的代码操作
-		var f = files[0];
-		{
-			var reader = new FileReader();
-			var name = f.name;
-			reader.onload = function(e) {
-				//if(typeof console !== 'undefined') console.log("onload", new Date(), true, true);
-				var data = e.target.result;
-				xw_xfer(data, to_csv);
-			};
-			reader.readAsBinaryString(f);
-		}
-	}
 
+
+var X = XLSX;
+//执行上传
+function inputFile1(){
+	var deptlist=null;
+	if(window.localStorage){
+		deptlist=JSON.parse(localStorage.getItem("excellist"));
+	}else{
+		deptlist=Cookie.read("excellist");
+	}	
+	//poi是二进制上传， 而当前ui不是二进制上传，还是文本的参数模式
+	$.ajax({
+	    url: "excelStus",    //请求的url地址，获取全部roles职务的名称
+	    dataType: "text",  
+	    //async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+	    type: "post",   //请求方式，默认post	
+	    //成功获取异步提交的参数执行的方法，req是返回的异步数据，类型是非常不固定
+//{"UCname":usn,"UPwd":pwd,"URid":rrole,"USex":sex,"UTel":tel,"UEmail":email},
+	    data:{"formdata":deptlist},
+	    success:function(data) {
+	    	alert("添加成功");		
+	    },		   
+	    error:function() {
+	        //请求出错处理
+	        alert("添加失败");
+	    }
+	});	
+}
+//点击<input type=file>表单:执行获取Excel并且转换json，存入缓存
+function inputFile(){
+// <input type="file" onclick="inputFile()" name="xlfile" id="xlf" />
+    var xlf = document.getElementById('xlf');
+	xlf.type="file";	
+	//swal("ff: "+xlf.addEventListener);
+	//当<input type="file">被点击的时候，创建的一个监听事件，xlf.addEventListener==true的时候说明该表单被点击了
+	//可以视为是 onchage操作，然后触发的是方法是handleFile()方法
+    if(xlf.addEventListener) {
+    	xlf.addEventListener('change', handleFile, false);
+    }else{
+    	swal("err");
+    }	
+}
+function ab2str(data) {
+	var o = "", l = 0, w = 10240;
+	for(; l<data.byteLength/w; ++l) o+=String.fromCharCode.apply(null,new Uint16Array(data.slice(l*w,l*w+w)));
+	o+=String.fromCharCode.apply(null, new Uint16Array(data.slice(l*w)));
+	return o;
+}
+function s2ab(s) {
+	var b = new ArrayBuffer(s.length*2), v = new Uint16Array(b);
+	for (var i=0; i != s.length; ++i) v[i] = s.charCodeAt(i);
+	return [v, b];
+}
+function xw_xfer(data, cb) {
+	var worker = new Worker('js/xlsx/xlsxworker2.js');//rABS ? XW.rABS : XW.norABS
+	worker.onmessage = function(e) {
+		switch(e.data.t) {
+			case 'ready': break;
+			case 'e': console.error(e.data.d); break;
+			default: xx=ab2str(e.data).replace(/\n/g,"\\n").replace(/\r/g,"\\r"); 
+			//console.log("done"); 
+			cb(JSON.parse(xx)); break;
+		}
+	};	
+		var val = s2ab(data);
+		worker.postMessage(val[1], [val[1]]);	
+}
+function to_csv(workbook) {
+	//var result = [];
+	//workbook.SheetNames.forEach(function(sheetName) {
+		//var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+		//if(csv.length > 0){
+			//result.push("SHEET: " + sheetName);					
+			//result.push(csv);
+			//result.push("+");
+		//}
+	//});
+	var result = {};
+	workbook.SheetNames.forEach(function(sheetName) {
+		var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+		if(roa.length > 0){
+			result[sheetName] = roa;
+		}
+	});
+	//out.innerText =result.join("\n");
+	var value=JSON.stringify(result, 2, 2);
+	if (window.localStorage) {
+		 //封装浏览器缓存 WebStrong，setItem类似setAttribute方法
+	    localStorage.setItem("excellist",JSON.stringify(value));	
+	} else {
+		//封装Cookie
+	    Cookie.write("excellist",JSON.stringify(value));	
+	}
+	//ecl=JSON.stringify(value);
+     //JSON.stringify(
+	//swal(value);	
+}
+//当导入的excel 表单点击的时候触发的function方法  参数e，是导入excel文件的对象，也就是 ttt.xlsx
+function handleFile(e) {
+	//swal("hand:"+e);
+	//获取点击的文件对象 ttt.xlsx
+	var files = e.target.files;
+	//获取文件中的第一个Sheet1，以下都是脚本操作文件流的代码操作
+	var f = files[0];
+	{
+		var reader = new FileReader();
+		var name = f.name;
+		reader.onload = function(e) {
+			//if(typeof console !== 'undefined') console.log("onload", new Date(), true, true);
+			var data = e.target.result;
+			xw_xfer(data, to_csv);
+		};
+		reader.readAsBinaryString(f);
+	}
+} 
 </script>
 </body>
 </html>

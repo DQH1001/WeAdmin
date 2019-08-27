@@ -21,7 +21,7 @@
   <!-- 过滤器中手动设置字符集或是通过init-param设置字符集 ，pc端改字乱码 ，移动端前台设为gbk可解决
   		此时过滤器实质为空过滤器
   -->
-  <filter>
+ <!--  <filter>
     <filter-name>abc</filter-name>
     <filter-class>com.spring.filter.MyFilter</filter-class>
     <init-param>
@@ -33,7 +33,7 @@
     <filter-name>abc</filter-name>
     <url-pattern>/*</url-pattern>
     <dispatcher>REQUEST</dispatcher>
-  </filter-mapping>
+  </filter-mapping> -->
  
   <servlet>
     <servlet-name>mvc</servlet-name>

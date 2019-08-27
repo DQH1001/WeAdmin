@@ -1,2 +1,2 @@
-})(typeof exports !== 'undefined' ? exports : XLSX);
+(typeof exports !== 'undefined' ? exports : XLSX);
 var XLS = XLSX;
