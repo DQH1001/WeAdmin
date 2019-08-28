@@ -21,7 +21,8 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
        <result column="cusername" property="cusername" jdbcType="VARCHAR" javaType="string" />
        <result column="ctvchoose" property="ctvchoose" jdbcType="INTEGER" javaType="Integer"/>  
       <result column="c_tid" property="c_tid" jdbcType="INTEGER" javaType="Integer" />
-      <result column="ccheck" property="ccheck" jdbcType="INTEGER" javaType="Integer" />      
+      <result column="ccheck" property="ccheck" jdbcType="INTEGER" javaType="Integer" />
+       <result column="cnumChange" property="cnumChange" jdbcType="INTEGER" javaType="Integer" />            
       <result column="c_pros" property="c_pros" jdbcType="VARCHAR" javaType="string" />
       <result column="cdetail" property="cdetail" jdbcType="VARCHAR" javaType="string" />
       <result column="numbers" property="numbers" jdbcType="INTEGER" javaType="Integer" />
@@ -77,7 +78,7 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
      </select>  
      
     <select id="selectNumsAndPros" resultMap="CompanyResult">
-     	select c.clogo,c.cid,c.cname,c.c_pros,c.cdetail,(select count(*) from scores where s_cid=c.cid) as numbers,
+     	select c.clogo,c.cid,c.cname,c.c_pros,c.cnumChange,c.cdetail,(select count(*) from scores where s_cid=c.cid) as numbers,
      	(select GROUP_CONCAT(pname SEPARATOR ',') as name from projects where FIND_IN_SET(pid,c.c_pros))
      	as pros from comps c where c.ccheck=1
      	<!-- order by c.cdate LIMIT #{currentPage},#{pageSize} -->

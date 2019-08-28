@@ -111,12 +111,31 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
 		  </if>
 		ORDER BY s.sid
     </select>  
+  <!-- 批量更新得在sql配置文件中加上   &allowMultiQueries=true 允许批量操作-->
+     <update id="updateYzTable" parameterType="java.util.List">
+    	<foreach collection="list" item="ms" index="index" open="" close="" separator=";">
+    		UPDATE comps 
+    		<set>
+                cnumChange=#{ms.cnumChange} 
+            </set>
+            <where>
+                cid = #{ms.cid} 
+            </where>
+    	</foreach>
+    </update>
     
     <insert id="InsertStusList" parameterType="java.util.List">
     	insert into stus(sid,sname,spwd,sdate,s_clid,ssex)value
     	<foreach collection="list" item="ms" separator=",">
     		(null,#{ms.sname},#{ms.spwd},now(),
     		(select clid from classes where clname =#{ms.classes.clname}),#{ms.ssex})
+    	</foreach>
+    </insert>
+    
+    <insert id="InsertScoresList" parameterType="java.util.List">
+    	insert into scores(scid,s_pid,s_cid,s_sid)value
+    	<foreach collection="list" item="ms" separator=",">
+    		(#{ms.scid},#{ms.s_pid},#{ms.s_cid},#{ms.s_sid})
     	</foreach>
     </insert>
     

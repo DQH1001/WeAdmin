@@ -81,4 +81,8 @@ public interface ICompsMapper {
 	public int updateNoCheckCompsBycid(int cid);
 	
 	public Student selectStuInfoBysid(Student stu);
+	
+	public int InsertScoresList(List<Scores> sco);
+
+	public int updateYzTable(@Param(value = "list")List<Comps> list);
 }

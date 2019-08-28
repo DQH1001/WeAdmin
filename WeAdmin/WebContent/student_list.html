@@ -700,9 +700,10 @@
 	<script src="https://img.hcharts.cn/highcharts/modules/drilldown.js"></script>
 		<script src="js/layer.js"></script>
 <script type="text/javascript">
+var usernifo= null;
 $(document).ready(function(){
 	//解析缓存login
-	var usernifo= null;
+	
 	//HTML5和大多数浏览器兼容性问题了。
 	if(window.localStorage){
 		//读取HTML5中的缓存，key是deptlist，而且读取出来text格式，还需要JSON.p.. text转换为json格式
@@ -916,8 +917,15 @@ $(document).ready(function(){
 	   });
 	//}
 		$(document).on("click","#delequ",function(){
+			if(usernifo==null){
+				if(confirm("请先登录，再进行操作")){
+					location.href="login.html";
+				}
+				return;
+			}
 			var sid=$(this).attr("title");
 			location.href="profile2.html?sid="+sid;
+
 		});
 		$("#tb").bootstrapTable({
 	        //contentType: "application/x-www-form-urlencoded",//必须要有！！！！
@@ -1222,7 +1230,7 @@ $(document).ready(function(){
 	
 	$("#logout").bind("click",function(){
 		if (window.localStorage) {
-			window.localStorage.removeItem("stuinfo");	
+			window.localStorage.removeItem("teainfo");	
 		}
 	});
 	$("#delButton").click(function(){
@@ -1235,37 +1243,44 @@ $(document).ready(function(){
 							alert("ID:"+a[i].infoid); 
 						})          			
             		}
-	})	
-})
-
-function updateNoCheckCompsBycid(cid){
-	$.ajax({
-		url:'updateNoCheckCompsBycid',
-		method:'post',			
-		dataType:'text',
-		data:{cid:cid},
-		success:function(data){
-			if(data.indexOf("ok")!=-1){
-				layer.alert('审核成功', {
-					  skin: 'layui-layer-molv' //样式类名
-					  ,closeBtn: 0
-					  ,anim: 3 //动画类型
-					});
-				$("#tb").bootstrapTable("refresh");
-			}else{
-				layer.alert('审核失败', {
-					  skin: 'layui-layer-molv' //样式类名
-					  ,closeBtn: 0
-					  ,anim: 6 //动画类型
-					});
-			}
-			
-		},
-		error:function(){
-			alert("error");
-		}
 	});
-}
+	
+})
+function updateNoCheckCompsBycid(cid){
+		if(usernifo==null||usernifo==""){
+			if(confirm("请先登录，再进行操作")){
+				location.href="login.html";	
+			}
+			return;
+		}		
+		$.ajax({
+			url:'updateNoCheckCompsBycid',
+			method:'post',			
+			dataType:'text',
+			data:{cid:cid},
+			success:function(data){
+				if(data.indexOf("ok")!=-1){
+					layer.alert('审核成功', {
+						  skin: 'layui-layer-molv' //样式类名
+						  ,closeBtn: 0
+						  ,anim: 3 //动画类型
+						});
+					$("#tb").bootstrapTable("refresh");
+				}else{
+					layer.alert('审核失败', {
+						  skin: 'layui-layer-molv' //样式类名
+						  ,closeBtn: 0
+						  ,anim: 6 //动画类型
+						});
+				}
+				
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+	}
+
 
 
 function exportExcel(){
@@ -1274,7 +1289,7 @@ function exportExcel(){
 		method:'post',			
 		dataType:'text',
 		success:function(data){
-			layer.alert('导出成功', {
+			layer.alert('导出成功,路径为：C:\eclipse-workplace\Members.xls', {
 				  skin: 'layui-layer-molv' //样式类名
 				  ,closeBtn: 0
 				  ,anim: 3 //动画类型

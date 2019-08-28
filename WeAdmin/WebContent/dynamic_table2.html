@@ -13,7 +13,7 @@
   <link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
   <link href="js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
   <link rel="stylesheet" href="js/data-tables/DT_bootstrap.css" />
-
+  <link href="css/layer.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
 
@@ -377,6 +377,7 @@
 
         <!-- page heading start-->
         <div class="page-heading">
+       
             <h3>
                 Dynamic Table
             </h3>
@@ -419,9 +420,12 @@
         <div class="panel-body">
            <div class="table-box" style="margin: 20px;" id="searchForm1">
 				<div id="toolbar">
-					<button id="insertButton" class="btn btn-default">insertRow</button>
-					<button id="getTableData" class="btn btn-default">getTableData</button>
-					<span id="numm"></span>
+					<button id="allUpdate" class="btn btn-default">一键修改</button>
+					<button id="okUpdate" class="btn btn-default">确认修改</button>
+				
+					<!--  <a href="javascript:;" class="btn btn-primary" id="addColumn">addClumn</a> -->
+					原始：<span id="numm"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					修改后：<span id="numm2"></span>
 				</div>				
 			</div>
 		 		
@@ -461,7 +465,7 @@
 <script src="js/bootstrap-table-export.js"></script>
 <script src="js/bootstrap-table-zh-CN.js"></script>
 <script src="js/tableExport.js"></script>
-
+	<script src="js/layer.js"></script>
 <script type="text/javascript" language="javascript"
  src="js/advanced-datatable/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="js/data-tables/DT_bootstrap.js"></script>
@@ -472,10 +476,60 @@
 <script src="js/scripts.js"></script>
 <script>
 	$(document).ready(function(){
+		//okUpdate numm numm2
+
+		$("#okUpdate").click(function(){
+			var numm=$("#numm").html();
+			var numm2=$("#numm2").html();
+			if(numm==numm2){
+				var ids="";
+				var changces="";
+				//alert("ok");
+				//获取整个table的所有值,变成json对象
+				var deptlist=JSON.stringify($("#table1").bootstrapTable('getData'));
+				//如果遍历的时候还需要JSON.parse 转化
+				deptlist=JSON.parse(deptlist);
+				$.each(deptlist,function(i){
+				    $.each(deptlist[i],function(k,v){					
+					   //比对和遍历只是两列,只是手动修改值的那一列
+					   if("infoid"==k){
+						   ids+=(parseInt(v)+";");
+					   }
+					   if("cnumChange"==k){
+						   changces+=(parseInt(v)+";");
+					   }
+					})
+				});
+				var data={
+						"ids":ids,
+						"changces":changces
+				}
+				$.ajax({
+					url:'updateYzTable',
+					method:'post',
+					data:data,
+					dataType:'text',
+					success:function(data){
+						if(data.indexOf("ok")!=-1){
+							layer.msg("修改成功");
+						}else{
+							layer.msg("修改失败");
+						}
+						
+					},
+					error:function(){
+						alert("error")
+						
+					}
+				});
+			}else{
+				layer.msg("前后修改不一致，请重新编辑");
+			}
+		});
 		$("#layout2").hide();		
 		$("#table1").bootstrapTable({
 	        //contentType: "application/x-www-form-urlencoded",//必须要有！！！！
-			url: 'in.json',
+			url: 'selectCompsAllForT2',
 			method : 'get', //
 			toolbar: '#searchForm1',//searchForm1        
 			pagination : true, //是否显示分页（*）
@@ -502,7 +556,7 @@
 			//
 			columns : [{
 				field : 'infoid',
-				title : '公司ID',
+				title : '公司ID1',
 				align : 'center',
 	            sortable : true
 			}, {
@@ -511,8 +565,18 @@
 				align : 'center',
 	            sortable : true
 			},{
+				field : 'basicNum',
+				title : '原先人数',
+				align : 'center',
+	            sortable : true
+			},{
 				field : 'iattendance',
-				title : '专业...',
+				title : '修改后的人数',
+				align : 'center',
+	            sortable : true
+			},{
+				field : 'cnumChange',
+				title : '原人数基础上',
 				align : 'center',
 	            sortable : true
 			},{
@@ -528,12 +592,16 @@
 		        }
 		    }],
 			onDblClickCell: function(field, value, row, $element) {
+				var beforechangce=row.iattendance;
+				var afterchangce=row.iattendance;
+				var rightcell=row.cnumChange;
 				//错误的逻辑: 第一次双击的时候计算和显示所有没调剂之前的人数总和
 				if(firstNum==0){
 				   saveNumber();
 				}
 				//只能接受一列可以手动修改数字
 				if(field=="iattendance"){
+					
 					//改变可以修改的状态脚本
 					$element.attr('contenteditable', true);//编辑状态了
 					//鼠标焦点离开的时候,之前编辑的单元格又不是编辑状态了,触发事件
@@ -542,12 +610,15 @@
 						let index = $element.parent().data('index');
 						let tdValue = $element.html();
 						//修改bootstrapTable显示的内容
-						saveData(index, field, tdValue);
+						afterchangce=tdValue;
+						var changce=rightcell+(afterchangce-beforechangce);
+						saveData(index, field, tdValue,changce);
+						getTableData();
 					})
 				}else{
 					//点击其他不能让院长手动编辑的单元格,不能编辑状态
 				   alert(value+" - "+row.uname);	
-				}				
+				}	
 			}
 	   });
 	   $("#insertButton").click(function() {
@@ -573,9 +644,12 @@
 			   }
 			})
 		})
-		$("#numm").html("原始:"+firstNum);
+		//$("#numm").html("原始:"+firstNum);
+		$("#numm").html(firstNum);
+		$("#numm2").html(firstNum);
 	}
-	   $('#getTableData').click(function() {
+	   //$('#getTableData').click(function() {
+		function getTableData(){
 		    var second=0;
 			//获取整个table的所有值,变成json对象
 			var deptlist=JSON.stringify($("#table1").bootstrapTable('getData'));
@@ -589,16 +663,26 @@
 				   }
 				})
 			})
-			$("#numm").html("原始:"+firstNum+",修改后:"+second);
-	   });
+			//$("#numm").html("原始:"+firstNum+",修改后:"+second);
+			$("#numm").html(firstNum);
+			$("#numm2").html(second);
+		}
+	  // });
 	   //
-	   function saveData(index, field, value) {
+	   function saveData(index, field, value,changce) {
+		  // alert(changce);
 			$("#table1").bootstrapTable('updateCell', {
 				index: index,       //行索引
 				field: field,       //列名
 				value: value        //cell值
+			});
+			$("#table1").bootstrapTable('updateCell', {
+				index: index,       //行索引
+				field: 'cnumChange',       //列名
+				value: changce        //cell值
 			})
 		}
+	  
 	});
 </script>
 </body>

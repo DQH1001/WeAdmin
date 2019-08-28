@@ -15,18 +15,73 @@ public class ICompsMapperDao {
 
 	public static void main(String[] args) {
 		ICompsMapperDao im=new ICompsMapperDao();
-		Map<String,List> list=new HashMap<String, List>();
+		//Map<String,List> list=new HashMap<String, List>();
 		//List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
-		list=im.getProANDComps();
-		System.out.println(list.toString());	
+		//list=im.getProANDComps();
+		//System.out.println(list.toString());	
 //		int count=im.insertLike(23, 17);
 //		System.out.println(count);
+		//im.InsertScoresList();
 	}
 	public ICompsMapperDao() {
 		
 		sess=DBTools.getSession();
 		cm=sess.getMapper(ICompsMapper.class);
 	}
+	//批量插入scores外键表，随机插值,不要轻易使用
+//	public void InsertScoresList() {
+//		List<Scores> sco=new ArrayList<Scores>();
+//		int[] compIds= {1,7,11,12,13};
+//		/*
+//		 * 公司1 专业 1,3,4,5,6
+//		 *    7    1,3,4,5,13
+//		 *    11   1,2,3,7,12
+//		 *    12   1,2,4,8,11
+//		 *    13   2,4,3,10,11
+//		 */
+//		int[] pros1= {1,3,4,5,6};
+//		int[] pros2= {1,3,4,5,13};
+//		int[] pros3= {1,2,3,7,12};
+//		int[] pros4= {1,2,4,8,11};
+//		int[] pros5= {2,4,3,10,11};
+//		//Random r=null;
+//		Scores score=null;
+//		int index1;
+//		int index2;
+//		int cid;
+//		int pid;
+//		for(int sid=200;sid<=400;sid++) {
+//			//r=new Random();
+//			index1=(int)(Math.random()*compIds.length);
+//			cid=compIds[index1];
+//			if(cid==1) {
+//				index2=(int)(Math.random()*pros1.length);
+//				pid=pros1[index2];
+//			}else if(cid==7) {
+//				index2=(int)(Math.random()*pros2.length);
+//				pid=pros2[index2];
+//			}else if(cid==11) {
+//				index2=(int)(Math.random()*pros3.length);
+//				pid=pros3[index2];
+//			}else if(cid==12) {
+//				index2=(int)(Math.random()*pros4.length);
+//				pid=pros4[index2];
+//			}else {
+//				index2=(int)(Math.random()*pros5.length);
+//				pid=pros5[index2];
+//			}
+//			score=new Scores();
+//			score.setS_cid(cid);
+//			score.setS_pid(pid);
+//			score.setS_sid(sid);
+//			sco.add(score);
+////			System.out.println(score.getS_cid()+" / "+score.getS_pid()+" / "+score.getS_sid());
+//		}
+//		int count=0;
+//    	count=cm.InsertScoresList(sco);
+//    	sess.commit();  		
+//    	System.out.println(count);
+//	}
 	//查询一个学生所有信息
 	public Student selectStuInfoBysid(int sid) {
 		Student stu=new Student();
@@ -662,6 +717,31 @@ public class ICompsMapperDao {
 			listMap.add(map);
 		}
 		return listMap;
+	}
+	//院长功能，显示当前企业被选人数，用于修改
+	public List<Map<String, Object>> selectCompsAllForT2() {
+		List<Comps> comps=new ArrayList();
+		comps=cm.selectNumsAndPros();
+		List<Map<String,Object>> listMap=new ArrayList<Map<String,Object>>();
+		Map<String,Object> map=null;
+		for(Comps com:comps) {
+			if(com.getNumbers()>0) {
+				map=new HashMap<String, Object>();
+				map.put("infoid", com.getCid());
+				map.put("uname", com.getCname());
+				map.put("basicNum", com.getNumbers());
+				map.put("iattendance", com.getNumbers()+com.getCnumChange());
+				map.put("cnumChange", com.getCnumChange());
+				listMap.add(map);
+			}
+		}
+		return listMap;
+	}
+	public int updateYzTable(List<Comps> listMap) {
+		int count=-1;
+    	count=cm.updateYzTable(listMap);
+    	sess.commit();  
+		return count;
 	}
 
 	

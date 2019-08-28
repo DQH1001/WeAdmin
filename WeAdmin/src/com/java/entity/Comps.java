@@ -3,7 +3,7 @@ package com.java.entity;
 import java.util.List;
 
 public class Comps {
-	private int cid=0,c_tid,numbers=-1,ctvchoose,ccheck;
+	private int cid=0,c_tid,numbers=-1,ctvchoose,ccheck,cnumChange;
 	private String cname,cdate,c_pros,cdetail,pros,clogo,cimgs,ctext,cvideo,cusername;
 	private Types type;
 	private int currentPage=0,pageSize=5;
@@ -40,6 +40,14 @@ public class Comps {
 	
 	public int getNumbers() {
 		return numbers;
+	}
+
+	public int getCnumChange() {
+		return cnumChange;
+	}
+
+	public void setCnumChange(int cnumChange) {
+		this.cnumChange = cnumChange;
 	}
 
 	public String getCusername() {
