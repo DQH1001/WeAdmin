@@ -202,9 +202,15 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
      <select id="RegistrationChecked" resultMap="StudentResult" parameterType="com.java.entity.Student">
      select * from stus where sname=#{sname}
     </select> 
-    
+    <select id="ProRegistrationChecked" resultMap="ProjectsResult" parameterType="com.java.entity.Projects">
+     select * from projects where pname=#{pname}
+    </select> 
      <insert id="stuRegistration" parameterType="com.java.entity.Student">
     	INSERT INTO stus set sname=#{sname},spwd=#{spwd},s_clid=#{s_clid},slogo=#{slogo}
+    </insert>
+    
+    <insert id="proRegistration" parameterType="com.java.entity.Projects">
+    	INSERT INTO projects set pname=#{pname},pdetail=#{pdetail},ptest=#{ptest},plogo=#{plogo}
     </insert>
     
     <select id="selectClassesAll" resultMap="ClassesResult">

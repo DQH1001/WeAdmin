@@ -16,7 +16,7 @@
   <link href="css/layer.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="css/bootstrap-fileupload.min.css" />
  <link rel="stylesheet" href="css/bootstrap-table.css" />
  <!-- 	
  HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,6 +24,28 @@
   <script src="js/html5shiv.js"></script>
   <script src="js/respond.min.js"></script>
   <![endif]-->
+      <link href="css/style-responsive.css" rel="stylesheet">
+ <style type="text/css">
+    	.inp{
+    		height: 40px;
+    		width:250px;
+    	}
+    	#selectClass{
+    		width:250px;
+    		height:30px;
+    	}
+    	#wrap{
+    		margin-left: 60px;
+    	}
+    	.bkcolor{
+    	 	background:#f0fbeb
+
+    	 }
+    	 .bkcolor1{
+    	 	
+			border:1px solid #bbe1f1;background:#eefaff
+    	 }
+    </style>
 </head>
 
 <body class="sticky-header">
@@ -288,22 +310,7 @@
         </div>
         <!-- header section end-->
 
-        <!-- page heading start-->
-        <div class="page-heading">
-       
-            <h3>
-                Dynamic Table
-            </h3>
-            <ul class="breadcrumb">
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Data Tables</a>
-                </li>
-                <li class="active"> Dynamic Table </li>
-            </ul>
-        </div>
+        
         <!-- page heading end-->
 
         <!--body wrapper start-->
@@ -311,25 +318,21 @@
         <div class="row">
         <div class="col-sm-12">
         <section class="panel">
-        <header class="panel-heading">
-            Dynamic Table
+        <header class="panel-heading bkcolor1">
+          <span style="font-size:25px;margin-left:44%;font-weight:bold;font-family:'楷体';"> 调剂人数</span>    
            
         </header>
-        <div class="panel-body">
+        <div class="panel-body bkcolor1">
 		 		
 							<!---->
-        <table id="table1"
-		>      
+        <table id="table1" class="bkcolor1">      
         </table>
        
         </div>
         </section>
 		<!---->
-		<section class="panel">
-        <header class="panel-heading">
-            Dynamic Table
-          
-        </header>
+		<section class="panel bkcolor" style="border:1px solid #96c2f1;">
+        
         <div class="panel-body">
            <div class="table-box" style="margin: 20px;" id="searchForm1">
 				<div id="toolbar">
@@ -343,9 +346,48 @@
 			</div>
 		 		
 							<!---->
-        <table id="table1">
-		 
-        </table>
+        <section class="panel bkcolor">
+        <header class="panel-heading">
+           <span style="font-size:25px;margin-left:44%;font-weight:bold;font-family:'楷体';">专业注册</span>    
+        </header>
+        <div class="panel-body bkcolor">
+             <form class="form-signin bkcolor" style="margin-top:10px;" id="stuForms" method="post" enctype="multipart/form-data">
+		        <div class="login-wrap" style="margin-top:10px;">
+		            <p>请填写专业信息</p>
+		            <input id="pname" onblur="pnamefunction()" name="pname" type="text" autofocus="" placeholder="专业名" class="inp">
+		            <span id="pnameshow"></span><br>
+		            
+		            <input id="pdetail" type="text" name="pdetail" onblur="pdetailfunction()" placeholder="专业详细描述" class="inp">
+		            <span id="pdetailshow"></span><br>
+		            
+		            <input id="ptest" type="text" name="ptest" placeholder="专业备注(选填)" class="inp">
+		            
+		            <div class="fileupload fileupload-new" data-provides="fileupload">
+		            
+		              <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+		                  <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+		              </div>
+		              <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+		              <div>
+		               <span class="btn btn-default btn-file" type="hidden">
+		                <span class="fileupload-new"><i class="fa fa-undo"></i>Change plogo</span>
+		               <span class="fileupload-exists"><i class="fa fa-undo"></i>Change plogo</span>
+		               <input type="file" name="file1" class="default" />                                                   
+		               </span>
+		              </div>
+		            </div>
+		
+		            <!-- 同步提交，设为submit，form表单中添加属性enctype="multipart/form-data"，脚本这边就完事了 -->
+		            <span id="regshow"></span>
+		            													<!-- submit -->
+		            <button id="registration" onclick="sub()" type="button" class="btn btn-lg btn-login btn-block">
+		                <i class="fa fa-check"></i>
+		            </button>
+		        </div>
+		
+		    </form> 
+        </div>       
+        </section>
      
         </div>
         </section>
@@ -384,7 +426,7 @@
 <script type="text/javascript" src="js/data-tables/DT_bootstrap.js"></script>
 <!--dynamic table initialization -->
 <script src="js/dynamic_table_init.js"></script>
-
+<script type="text/javascript" src="js/bootstrap-fileupload.min.js"></script>
 <!--common scripts for all pages-->
 <script src="js/scripts.js"></script>
 <script>
@@ -545,7 +587,7 @@ var usernifo= null;
 				title : '原人数基础上',
 				align : 'center',
 	            sortable : true
-			},{
+			}/* ,{
 		        title: '操作',
 		        field: 'un',
 		        align: 'center',
@@ -556,7 +598,7 @@ var usernifo= null;
 		        	//row.uid得bootstrap当前table的一行找到   
 		        	return d;
 		        }
-		    }],
+		    } */],
 			onDblClickCell: function(field, value, row, $element) {
 
 				if(usernifo==null||usernifo==""){
@@ -663,6 +705,84 @@ var usernifo= null;
 		});
 	  
 	});
+	
+	var namebool=0;
+	//用户名检测
+	function pnamefunction(){
+		$.ajax({
+			url:"ProjectsRegistrationChecked",
+			method:"post",
+			dataType:"json",
+			data:{"pname":$("#pname").val()},
+			success:function(data){
+				//data为空值,说明pname数据库没找到封装了null,可以注册
+				if(data==null || data==""){
+					namebool=1;
+					$("#pnameshow").html("<img src='upload1/checkok.png' title='该专业名可以使用'/>");				
+				}else{
+					namebool=0;
+					//之前判断过data不为空,不用担心空指针
+					//data.pname为空,说明返回的是空对象,也就是pname为空(servlet中pname为空给实例化空对象),显示提示信息
+					if(data.pname==null||data.pname==""){	
+						$("#pnameshow").html("<img src='upload1/checknone.png' title='专业名不能为空'/>");						
+					//其他情况,也就是返回的为内部有值的对象,不能注册
+					}else{
+						$("#pnameshow").html("<img src='upload1/checknone.png' title='该专业名已被注册'/>");
+					}
+				}			
+			},
+			error:function(){
+			   	alert("eerr1");
+			}
+		});
+	}
+	var pdetailbool=0;
+	function pdetailfunction(){
+		var pdetail=$("#pdetail").val()
+		if(pdetail==null || pdetail==""){
+			pdetailbool=0;
+			$("#pdetailshow").html("<img src='upload1/checknone.png' title='专业详情不能为空'/>");
+							
+		}else{
+			pdetailbool=1;
+			$("#pdetailshow").html("<img src='upload1/checkok.png' title='ok'/>");
+		}		
+	}
+	function sub(){
+		if(usernifo==null||usernifo==""){
+			if(confirm("请先登录，再进行操作")){
+				location.href="login.html";	
+			}
+			return;
+		}
+		if(namebool==1&&pdetailbool==1){
+			$("#regshow").html("");
+			var foData=new FormData($("#stuForms")[0]);
+			$.ajax({
+				url: "proRegistration",    //批量固定路径上传
+			    type: 'POST',  
+			    data: foData, 
+		        cache: false,  
+		        contentType: false,
+		        processData: false,  
+			    dataType: "text",   //返回的异步数据格式为不能json，必须是文本格式
+			    success:function(data){
+			    	if(data.indexOf("ok")!=-1){
+			    		layer.msg("新增专业成功");
+			    	}else{
+			    		layer.msg("新增专业失败");
+			    	}
+			    	
+				},
+			    error:function(){
+			    	alert("eerr9");
+			    }
+			});
+		}else{				
+			$("#regshow").html("请先正确填写注册信息");
+			$("#regshow").css("color","red");
+		}
+	}
 </script>
 </body>
 </html>

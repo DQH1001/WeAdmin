@@ -607,6 +607,13 @@ public class ICompsMapperDao {
 		Student student=cm.RegistrationChecked(stu);
 		return student;
 	}
+	//专业注册验证
+		public Projects ProRegistrationChecked(String sname) {
+			Projects pro=new Projects();
+			pro.setPname(sname);
+			Projects pro1=cm.ProRegistrationChecked(pro);
+			return pro1;
+		}
 	//学生注册
 	public int stuRegistration(String sname,String spwd,int s_clid,String slogo) {
 		Student stu=new Student();
@@ -616,7 +623,7 @@ public class ICompsMapperDao {
 		stu.setSlogo(slogo);
 		int count=0;
     	try {    		
-    		cm.stuRegistration(stu);
+    		count=cm.stuRegistration(stu);
     		sess.commit();  		
     	}catch (Exception e) {
 			e.printStackTrace();
@@ -891,6 +898,25 @@ public class ICompsMapperDao {
     	sess.commit();  
 		return count;
 	}
+	public int proRegistration(String pname, String pdetail, String ptest, String fileName) {
+		Projects pro=new Projects();
+		pro.setPname(pname);
+		pro.setPdetail(pdetail);
+		pro.setPtest(ptest);
+		pro.setPlogo(fileName);
+		int count=0;
+    	try {    		
+    		count=cm.proRegistration(pro);
+    		sess.commit();  		
+    	}catch (Exception e) {
+			e.printStackTrace();
+			sess.rollback();
+		} finally {
+			sess.close();
+		}
+    	return count;
+	}
+			
 
 	
 }

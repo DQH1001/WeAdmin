@@ -30,7 +30,11 @@ public interface ICompsMapper {
 	
 	public Student RegistrationChecked(Student stu);	
 	
-	public void stuRegistration(Student stu);
+	public Projects ProRegistrationChecked(Projects pro);
+	
+	public int stuRegistration(Student stu);
+	
+	public int proRegistration(Projects pro);
 	
 	public Scores selectScoresAll(int sid);
 	
