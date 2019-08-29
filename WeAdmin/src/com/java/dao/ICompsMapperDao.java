@@ -15,6 +15,7 @@ public class ICompsMapperDao {
 
 	public static void main(String[] args) {
 		ICompsMapperDao im=new ICompsMapperDao();
+		System.out.println(im.selectCompsAllForT222());
 		//Map<String,List> list=new HashMap<String, List>();
 		//List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
 		//list=im.getProANDComps();
@@ -718,6 +719,151 @@ public class ICompsMapperDao {
 		}
 		return listMap;
 	}
+	//院长功能，一键修改
+		public List<Map<String, Object>> selectCompsAllForT222() {
+			Comps comp=new Comps();
+			comp.setNumbers(0);
+			List<Comps> comps=new ArrayList();
+			comps=cm.selectNearlyComps(comp);
+			//存储原来总人数
+			int count=0;
+			//数组索引
+			int i=0;
+			int num;
+			//存储公司原人数
+			int[] nums=new int[comps.size()];
+			//查询表数据
+			List<Map<String,Object>> listMap=new ArrayList<Map<String,Object>>();
+			Map<String,Object> map=null;
+			System.out.println("原始值");
+			for(Comps com:comps) {
+				num=com.getNumbers();
+				map=new HashMap<String, Object>();
+				map.put("infoid", com.getCid());
+				map.put("uname", com.getCname());
+				map.put("basicNum", num);
+				map.put("iattendance", num+com.getCnumChange());
+				map.put("cnumChange", com.getCnumChange());
+				listMap.add(map);
+//				if(num%10>=5) {
+//					count+=num%10-10;
+//					System.out.println("公司id："+com.getCid()+" / 公司人数："+num+" / 人数距离10差数："+(num%10-10));
+//				}else {
+//					count+=num%10;
+//					System.out.println("公司id："+com.getCid()+" / 公司人数："+num+" / 人数距离10差数："+(num%10));
+//				}
+				//原先各公司总人数
+				count+=num;
+				//存入数组里
+				nums[i]=num;
+				System.out.print(num+" / ");
+				i++;
+				
+			}
+			System.out.println(count);
+			//不管三七二十一，先化成十的倍数
+			int[] nums2=nums;
+			//改后的总人数
+			int countAfter=0;
+			for (int n=0;n<nums2.length;n++) {
+				if(nums2[n]%10>=5) {
+					nums2[n]=(nums2[n]/10+1)*10;
+				}else {
+					nums2[n]=(nums2[n]/10)*10;
+				}
+				countAfter+=nums[n];
+			}
+			//显示一股脑改后的值
+			System.out.println("修改后");
+			for (int j = 0; j < nums2.length; j++) {
+				
+				System.out.print(nums2[j]+" / ");
+			}
+			System.out.println(countAfter);
+			
+			//在将多出来或少的数据重新封装一次
+			if(count-countAfter==0) {
+				return fuzhufengzhuang(listMap,nums2);
+			}else if(count-countAfter>0) {
+				int cha=count-countAfter;
+				while(cha>0) {
+					//找出最小值
+					int min=0;
+					for (int j = 0; j < nums2.length; j++) {
+						if(j==0) {
+							min=nums2[j];
+						}
+						if(min>nums2[j]) {
+							min=nums2[j];
+						}
+					}
+					System.out.println("重新封装，当前数组的最小值："+min);
+					//将一批最小值增加数量
+					for (int j = 0; j < nums2.length&&cha>0; j++) {
+						if(nums2[j]==min) {
+							if(cha>=10) {
+								nums2[j]+=10;
+								cha=cha-10;
+							}else{
+								nums2[j]+=cha;
+								cha=0;
+							}
+						}
+					}
+				}
+				return fuzhufengzhuang(listMap,nums2);
+			}else {
+				int cha=count-countAfter;
+				while(cha<0) {
+					//找出最大值
+					int max=0;
+					for (int j = 0; j < nums2.length; j++) {
+						if(j==0) {
+							max=nums2[j];
+						}
+						if(max<nums2[j]) {
+							max=nums2[j];
+						}
+					}
+					System.out.println("重新封装，当前数组的最大值："+max);
+					//将一批最大值减少数量
+					for (int j = 0; j < nums2.length&&cha<0; j++) {
+						if(nums2[j]==max) {
+							if(cha<=-10) {
+								nums2[j]-=10;
+								cha=cha+10;
+							}else{
+								nums2[j]+=cha;
+								cha=0;
+							}
+						}
+					}
+				}
+				return fuzhufengzhuang(listMap,nums2);
+			}
+		}
+		//辅助上一函数完成数据封装
+		private List<Map<String, Object>> fuzhufengzhuang(List<Map<String, Object>> listMap, int[] nums2) {
+			//Map集合不能动态修改，因此用一个新的map重新存储
+			Map<String,Object> m=null;
+			List<Map<String,Object>> ls=new ArrayList<Map<String,Object>>();
+			//数组索引
+			int i=0;
+			for (Map<String, Object> map : listMap) {
+				m=new HashMap<String, Object>();
+				m.put("infoid", map.get("infoid"));
+				m.put("uname", map.get("uname"));
+				m.put("basicNum", map.get("basicNum"));
+				m.put("iattendance", nums2[i]);				
+				m.put("cnumChange", nums2[i]-(int)(map.get("basicNum")));
+//				map.put("basicNum", num);
+//				map.put("iattendance", num+com.getCnumChange());
+//				map.put("cnumChange", com.getCnumChange());
+				ls.add(m);
+				i++;
+			}
+			return ls;
+		}
 	//院长功能，显示当前企业被选人数，用于修改
 	public List<Map<String, Object>> selectCompsAllForT2() {
 		List<Comps> comps=new ArrayList();

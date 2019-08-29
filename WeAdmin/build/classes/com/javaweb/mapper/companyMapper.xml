@@ -93,7 +93,7 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
      	select * from comps where cid=#{cid} and ccheck=1
     </select> 
      <select id="selectNearlyComps" resultMap="CompanyResult" parameterType="com.java.entity.Comps">
-    	select c.clogo,c.cid,c.c_pros,c.cdetail,c.cname,(SELECT COUNT(*) from scores where s_cid=c.cid) as numbers,
+    	select c.clogo,c.cid,c.c_pros,c.cdetail,c.cname,c.cnumChange,(SELECT COUNT(*) from scores where s_cid=c.cid) as numbers,
 		(SELECT GROUP_CONCAT(pname SEPARATOR ',') as pnames from projects where FIND_IN_SET(pid,c.c_pros))
  		as pros from comps c where (SELECT COUNT(*) from scores where s_cid=c.cid)>#{numbers} 
 		<if test="cid!=0">

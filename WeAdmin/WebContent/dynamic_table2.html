@@ -475,9 +475,23 @@
 <!--common scripts for all pages-->
 <script src="js/scripts.js"></script>
 <script>
-	$(document).ready(function(){
+	$(document).ready(function(){	
+		$("#allUpdate").click(function(){
+			$.ajax({
+				url:'updateAllYzTable',
+				method:'post',
+				dataType:'json',
+				success:function(data){
+					layer.msg("请手动修改不足之处，在点击确认修改按钮");
+					$("#table1").bootstrapTable('load',data);
+				},
+				error:function(){
+					alert("error")
+					
+				}
+			});	
+		});
 		//okUpdate numm numm2
-
 		$("#okUpdate").click(function(){
 			var numm=$("#numm").html();
 			var numm2=$("#numm2").html();
