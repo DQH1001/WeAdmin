@@ -426,6 +426,10 @@ var app=new Vue({
 					});
 		},
 		postwords(){
+			if($("#txtarea").val()==""||$("#txtarea").val()==null){
+				layer.msg("请填写内容再发布");
+				return;
+			}
 			var foData=new FormData($("#stuForms1")[0]);			
 			 let config = { headers: { 'Content-Type': 'multipart/form-data' } };
 		        this.uping = 1;
