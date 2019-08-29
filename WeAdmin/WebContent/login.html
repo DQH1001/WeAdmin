@@ -146,8 +146,12 @@ $(document).ready(function(){
 					if(data.teaname!=null && data.teaname!=""){
 						//alert("欢迎登陆:"+data.sname);
 						cl("teainfo",JSON.stringify(data));
-						//跳转主页
-						location.href="student_list.html";
+						if(data.teaid==2){
+							location.href="dynamic_table2.html";
+						}else{
+							//跳转主页
+							location.href="student_list.html";
+						}	
 					}else{
 						alert("教师用户名或密码错误!");
 					}

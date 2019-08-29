@@ -123,9 +123,16 @@ public class ExportServlet extends HttpServlet {
 
            HSSFCell titleCell6= titleRow.createCell(5);             //在行中创建第6个单元格
 
-           titleCell5.setCellValue("专业");                        //设置第6个单元格的值
+           titleCell6.setCellValue("专业");                        //设置第6个单元格的值
 
+           HSSFCell titleCell7= titleRow.createCell(6);             //在行中创建第7个单元格
+
+           titleCell7.setCellValue("性别");                        //设置第7个单元格的值
            
+           HSSFCell titleCell8= titleRow.createCell(7);             //在行中创建第8个单元格
+
+           titleCell8.setCellValue("联系方式");                        //设置第8个单元格的值
+
            HSSFRow valueRow = null;
            int i=0;
            for (Map<String,Object> map : ls) {
@@ -155,6 +162,17 @@ public class ExportServlet extends HttpServlet {
                HSSFCell proCell = valueRow.createCell(5);
 
                proCell.setCellValue((String)map.get("pname"));
+               
+               HSSFCell sexCell = valueRow.createCell(6);
+               if(map.get("ssex").equals("1")) {
+            	   sexCell.setCellValue("男");
+               }else {
+            	   sexCell.setCellValue("女");
+               }
+              
+               HSSFCell telCell = valueRow.createCell(7);
+
+               telCell.setCellValue((String)map.get("stel"));
            }
           
            

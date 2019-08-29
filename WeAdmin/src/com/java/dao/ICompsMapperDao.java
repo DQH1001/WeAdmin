@@ -337,6 +337,8 @@ public class ICompsMapperDao {
 			map.put("slogo", "upload/"+stu.getSlogo());
 			map.put("cname", stu.getCname());
 			map.put("pname", stu.getPname());
+			map.put("ssex", stu.getSsex());
+			map.put("stel", stu.getStel());
 			lm.add(map);
 		}
 		return lm;
@@ -844,7 +846,7 @@ public class ICompsMapperDao {
 		}
 		//辅助上一函数完成数据封装
 		private List<Map<String, Object>> fuzhufengzhuang(List<Map<String, Object>> listMap, int[] nums2) {
-			//Map集合不能动态修改，因此用一个新的map重新存储
+			//Map集合不好动态加长度，这里是以为不能修改，因此用了一个新的listmap重新存储
 			Map<String,Object> m=null;
 			List<Map<String,Object>> ls=new ArrayList<Map<String,Object>>();
 			//数组索引

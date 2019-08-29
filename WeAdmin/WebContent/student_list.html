@@ -78,12 +78,19 @@
             </div>
 
             <!--sidebar nav start-->
-            <ul class="nav nav-pills nav-stacked custom-nav">
+            <ul class="nav nav-pills nav-stacked custom-nav" id="t1">
                
                <li id="main"><a href="dynamic_table.html"><i class="fa fa-home"></i> <span>主页</span></a></li>
                 <li id="profile"><a href="profile.html"><i class="fa fa-laptop"></i> <span>个人中心</span></a></li>
                	<li id="login"><a href="login.html"><i class="fa fa-sign-in"></i> <span>登录</span></a></li>
                	<li id="teacher"><a href="student_list.html"><i class="fa fa-laptop"></i> <span>教师管理</span></a></li>
+               	 	<li id="Yz"><a href="dynamic_table2.html"><i class="fa fa-laptop"></i> <span>调剂人数</span></a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked custom-nav" id="t2">
+               
+             	<li id="login"><a href="login.html"><i class="fa fa-sign-in"></i> <span>登录</span></a></li>
+               	<li id="teacher"><a href="student_list.html"><i class="fa fa-laptop"></i> <span>教师管理</span></a></li>
+               	<li id="Yz"><a href="dynamic_table2.html"><i class="fa fa-laptop"></i> <span>调剂人数</span></a></li>
             </ul>
             <!--sidebar nav end-->
 
@@ -702,6 +709,7 @@
 <script type="text/javascript">
 var usernifo= null;
 $(document).ready(function(){
+	$("#t2").hide();
 	//解析缓存login
 	
 	//HTML5和大多数浏览器兼容性问题了。
@@ -724,7 +732,7 @@ $(document).ready(function(){
 		    Cookie.write(key,msg);	
 		}
 	} 
-	
+
 	if(usernifo!=null && usernifo!=""){
 		//alert(usernifo.sname);
 	    $("#sname2").html(usernifo.teaname);
@@ -733,9 +741,16 @@ $(document).ready(function(){
 	    $("#stuImg").attr("src","upload/"+usernifo.tealogo);
 	    $("#loginOK").css('display','block');
 	    $("#loginNone").css('display','none');
-	  	for(var i=0;i<usernifo.teamenus.length;i++){
-	  		$("#"+usernifo.teamenus[i]+"").hide();
-	  	}
+	    if(usernifo.teaid!=2){
+	    	for(var i=0;i<usernifo.teamenus.length;i++){
+		  		$("#"+usernifo.teamenus[i]+"").hide();
+		  	}
+	    }else{
+	    	$("#t2").show();
+	    	$("#t1").hide();
+	    }
+	  	
+	  	
 	    //getScid();
 	}else{
 		$("#loginNone").css('display','block');
@@ -1289,7 +1304,7 @@ function exportExcel(){
 		method:'post',			
 		dataType:'text',
 		success:function(data){
-			layer.alert('导出成功,路径为：C:\eclipse-workplace\Members.xls', {
+			layer.alert('导出成功,路径为：C:\\eclipse-workplace\\Members.xls', {
 				  skin: 'layui-layer-molv' //样式类名
 				  ,closeBtn: 0
 				  ,anim: 3 //动画类型
