@@ -15,8 +15,8 @@ public class ICompsMapperDao {
 
 	public static void main(String[] args) {
 		ICompsMapperDao im=new ICompsMapperDao();
-		System.out.println(im.selectCompsAllForT222());
-		//im.InsertScoresList();
+//		System.out.println(im.selectCompsAllForT222());
+		im.InsertScoresList();
 		//Map<String,List> list=new HashMap<String, List>();
 		//List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
 		//list=im.getProANDComps();
@@ -51,7 +51,7 @@ public class ICompsMapperDao {
 		int index2;
 		int cid;
 		int pid;
-		for(int sid=200;sid<=400;sid++) {
+		for(int sid=819;sid<=1019;sid++) {
 			//r=new Random();
 			index1=(int)(Math.random()*compIds.length);
 			cid=compIds[index1];
@@ -601,9 +601,9 @@ public class ICompsMapperDao {
 			return listMap;
 		}
 	//学生注册验证
-	public Student RegistrationChecked(String sname) {
+	public Student RegistrationChecked(int sid) {
 		Student stu=new Student();
-		stu.setSname(sname);
+		stu.setSid(sid);
 		Student student=cm.RegistrationChecked(stu);
 		return student;
 	}
@@ -615,12 +615,14 @@ public class ICompsMapperDao {
 			return pro1;
 		}
 	//学生注册
-	public int stuRegistration(String sname,String spwd,int s_clid,String slogo) {
+	public int stuRegistration(String sname,String spwd,int s_clid,String slogo,String ssex) {
 		Student stu=new Student();
-		stu.setSname(sname);
+		stu.setSname("游客");
 		stu.setSpwd(spwd);
 		stu.setS_clid(s_clid);
+		stu.setSid(Integer.valueOf(sname));
 		stu.setSlogo(slogo);
+		stu.setSsex(ssex);
 		int count=0;
     	try {    		
     		count=cm.stuRegistration(stu);

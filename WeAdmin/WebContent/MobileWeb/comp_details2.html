@@ -119,7 +119,7 @@
     </div>
     <div class="decoration"></div>
     <div class="notification-page" v-for="item in todos">
-        <p class="notification-page-item">
+        <p class="notification-page-item"  style="width: 90%">
             <img :src="'../'+item.plogo" alt="img">
             <em>
                {{item.pname}}<br>
@@ -148,7 +148,7 @@
                 <a href="#" class="submenu-nav-deploy">展开-----收起</a>
                 <div class="submenu-nav-items">
                     <a href="#" v-for="item in ls">
-                    <p class="notification-page-item">
+                    <p class="notification-page-item" style="width: 90%">
 					<img :src="'../'+item.ulogo" alt=""/>
                    <em> {{item.uname}}-{{item.urose}}</em>
                     <strong>人气值:{{item.pc}}</strong>
@@ -176,7 +176,7 @@
     
     <div class="container no-bottom" ng-controller="secondController">
         <!-- Page Columns-->
-        <div class="one-half-responsive" v-for="cw in CompWords" v-if="cw.whid==0">
+        <div class="one-half-responsive" style="width: 100%" v-for="cw in CompWords" v-if="cw.whid==0">
             <p class="thumb-left no-bottom">
                 <img v-if="cw.wauthor=='s'" alt="" :src="'../'+cw.slogo" class="media-object">
                 <img v-else alt="" :src="clogo" class="media-object">
@@ -190,7 +190,7 @@
            		</div>
             </p>
             		
-			        <div class="one-half-responsive last-column" v-for="word in CompWords" v-if="word.whid==cw.wid">
+			        <div class="one-half-responsive last-column" style="width: 100%" v-for="word in CompWords" v-if="word.whid==cw.wid">
 			        <div class="decoration"></div>        
 			            <p class="thumb-right no-bottom">
 			                <img v-if="word.wauthor=='s'" alt="" :src="'../'+word.slogo" class="media-object">

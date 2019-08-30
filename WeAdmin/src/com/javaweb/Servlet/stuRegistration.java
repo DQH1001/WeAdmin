@@ -56,6 +56,7 @@ public class stuRegistration extends HttpServlet {
 			//如果HTML5 <input type=file 如果没有name=file1 的属性，导致其他的文本和二进制文件都上传null>
 			String sname=su.getRequest().getParameter("sname").trim();
 			String spwd=su.getRequest().getParameter("spwd").trim();
+			String ssex=su.getRequest().getParameter("demo-radio").trim();
 			int s_clid=Integer.valueOf(su.getRequest().getParameter("classid"));//外键值
 			//String ssex=su.getRequest().getParameter("sample-radio");
 			//获取上传的路径,指的是WebContent路径下的文件夹
@@ -91,7 +92,7 @@ public class stuRegistration extends HttpServlet {
 				PrintWriter pw=response.getWriter();
 				ICompsMapperDao cm=new ICompsMapperDao();
 //				String slogo=uploadFile+"\\"+fileName;
-				int count=cm.stuRegistration(sname,spwd,s_clid,fileName);
+				int count=cm.stuRegistration(sname,spwd,s_clid,fileName,ssex);
 				if(count>0){
 					pw.print("ok");
 				}else{

@@ -35,22 +35,19 @@ public class RegistrationChecked extends HttpServlet {
 		ICompsMapperDao cm=new ICompsMapperDao();
 		String sname=request.getParameter("usn");
 		PrintWriter pw=response.getWriter();
-		String chk=request.getParameter("chk");
-		if(chk.equals("stu")) {
-			//sname为空,返回页面空对象
-			if(sname==null||sname.equals("")) {
-				Student stu=new Student();
-				JSONObject js=JSONObject.fromObject(stu);	
-				pw.print(js.toString());	
-				return;
-			}
-			//sname不为空返回null(数据库没该名字)或者对象(数据库有该名字)
-			Student stu=cm.RegistrationChecked(sname);
+		//sname为空,返回页面空对象
+		if(sname==null||sname.equals("")) {
+			Student stu=new Student();
 			JSONObject js=JSONObject.fromObject(stu);	
 			pw.print(js.toString());	
-		}else {
-			System.out.println("教师名字检查");
+			return;
 		}
+		//sname不为空返回null(数据库没该名字)或者对象(数据库有该名字)
+		Student stu=cm.RegistrationChecked(Integer.valueOf(sname));
+		JSONObject js=JSONObject.fromObject(stu);	
+		pw.print(js.toString());	
+			
+		
 	}
 
 	/**

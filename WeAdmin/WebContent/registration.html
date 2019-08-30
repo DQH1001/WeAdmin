@@ -61,7 +61,7 @@
             </div> -->
 
             <p>请在下面输入您的帐户详细信息</p>
-            <input id="nameChecked" onblur="myfunction()" name="sname" type="text" autofocus="" placeholder="学生ID/Name" class="inp">
+            <input id="nameChecked" onblur="myfunction()" name="sname" type="text" autofocus="" placeholder="学生ID" class="inp">
             <span id="usn"></span><br>
             
             <input id="pwd1" type="password" name="spwd" onblur="reCheckPwd()" placeholder="Password" class="inp">
@@ -87,11 +87,11 @@
             </div>
             
             <div class="square single-row" id="wrap">
-            <input type="radio"  checked="checked" value="stu" class="chk" name="demo-radio">
-            <label>学生</label>
+            <input type="radio"  checked="checked" value="1" class="chk" name="demo-radio">
+            <label>男</label>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio"  value="tea" class="chk" name="demo-radio">
-            <label>教师</label>
+            <input type="radio"  value="2" class="chk" name="demo-radio">
+            <label>女</label>
         	</div>
         	
         	<select id="selectClass" name="classid"></select> 
@@ -185,16 +185,16 @@ $(document).ready(function(){
 			}
 		});
 	}
-	$(".chk").click(function(){
+	/* $(".chk").click(function(){
 		
 		if($(this).attr("value")=="stu"){
-			$("#nameChecked").attr("placeholder","学生ID/Name");
+			$("#nameChecked").attr("placeholder","学生ID");
 			$("#selectClass").css("display","block");
 		}else if($(this).attr("value")=="tea"){
-			$("#nameChecked").attr("placeholder","教师ID/Name");
+			$("#nameChecked").attr("placeholder","教师ID");
 			$("#selectClass").css("display","none");
 		}
-	});
+	}); */
 
 })
 //要把要存储HTML5缓存的数据放入缓存function
@@ -216,22 +216,21 @@ function cl(key,msg){
 			url:"RegistrationChecked",
 			method:"post",
 			dataType:"json",
-			data:{"usn":$("#nameChecked").val(),
-				"chk":$('#wrap input[name="demo-radio"]:checked').val()},
+			data:{"usn":$("#nameChecked").val()},
 			success:function(data){
 				//data为空值,说明sname一定不为空,只是数据库没找到封装了null,可以注册
 				if(data==null || data==""){
 					namebool=1;
-					$("#usn").html("<img src='upload1/checkok.png' title='该用户名可以使用'/>");				
+					$("#usn").html("<img src='upload1/checkok.png' title='该ID可以使用'/>");				
 				}else{
 					namebool=0;
 					//之前判断过data不为空,不用担心空指针
 					//data.sname为空,说明返回的是空对象,也就是sname为空(servlet中sname为空给实例化空对象),显示提示信息
 					if(data.sname==null||data.sname==""){	
-						$("#usn").html("<img src='upload1/checknone.png' title='用户名不能为空'/>");						
+						$("#usn").html("<img src='upload1/checknone.png' title='ID不能为空'/>");						
 					//其他情况,也就是返回的为内部有值的对象,不能注册
 					}else{
-						$("#usn").html("<img src='upload1/checknone.png' title='该用户名已被注册'/>");
+						$("#usn").html("<img src='upload1/checknone.png' title='该ID已被注册'/>");
 					}
 				}			
 			},

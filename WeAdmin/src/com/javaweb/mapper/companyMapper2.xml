@@ -125,10 +125,10 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
     </update>
     
     <insert id="InsertStusList" parameterType="java.util.List">
-    	insert into stus(sid,sname,spwd,sdate,s_clid,ssex)value
+    	insert into stus(sid,sname,spwd,sdate,s_clid,ssex,slogo)value
     	<foreach collection="list" item="ms" separator=",">
     		(null,#{ms.sname},#{ms.spwd},now(),
-    		(select clid from classes where clname =#{ms.classes.clname}),#{ms.ssex})
+    		(select clid from classes where clname =#{ms.classes.clname}),#{ms.ssex},#{ms.slogo})
     	</foreach>
     </insert>
     
@@ -200,13 +200,13 @@ namespace="com.java.entity":针对该包下的所以实体类对象映射配置�
     </select> 
     
      <select id="RegistrationChecked" resultMap="StudentResult" parameterType="com.java.entity.Student">
-     select * from stus where sname=#{sname}
+     select * from stus where sid=#{sid}
     </select> 
     <select id="ProRegistrationChecked" resultMap="ProjectsResult" parameterType="com.java.entity.Projects">
      select * from projects where pname=#{pname}
     </select> 
      <insert id="stuRegistration" parameterType="com.java.entity.Student">
-    	INSERT INTO stus set sname=#{sname},spwd=#{spwd},s_clid=#{s_clid},slogo=#{slogo}
+    	INSERT INTO stus set sid=#{sid},sname=#{sname},spwd=#{spwd},s_clid=#{s_clid},slogo=#{slogo},sdate=NOW(),ssex=#{ssex}
     </insert>
     
     <insert id="proRegistration" parameterType="com.java.entity.Projects">

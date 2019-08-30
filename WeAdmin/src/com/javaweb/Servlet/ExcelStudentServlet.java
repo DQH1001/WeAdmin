@@ -39,23 +39,17 @@ public class ExcelStudentServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 	    String data=request.getParameter("formdata");
 	    System.out.println("data:"+data);
-	    //澶栧眰json map鏈哄埗杞寲涓� 銆�...object
+
 	    JSONObject da=JSONObject.fromObject(data);
-	    //閫氳繃sheet1鑾峰彇list闆嗗悎 
+
 		JSONArray list=da.getJSONArray("Sheet1");
 		List<Student> lstu=new ArrayList<Student>();
 		Student stu=null;
 		Classes cs=null;
 		for (int i=0;i<list.size();i++) {
-			/*
-			 * {
-      "name": "鍐敓",
-      "pwd": "67",
-      "classes": "澶т簩 涓夌彮",
-      "sex": "濂�"
-    }
-			 */
-			JSONObject obj=list.getJSONObject(i);			
+
+			JSONObject obj=list.getJSONObject(i);	
+			String slogo=obj.getString("slogo");
 			String name=obj.getString("name");
 			String pwd=obj.getString("pwd");
 			String cls=obj.getString("classes");
@@ -72,6 +66,7 @@ public class ExcelStudentServlet extends HttpServlet {
 			stu.setSname(name);
 			stu.setSpwd(pwd);
 			stu.setSsex(sex);
+			stu.setSlogo(slogo);
 			lstu.add(stu);
 			System.out.println(name+"-"+pwd+"-"+cls+"-"+sex);
 		}
