@@ -51,7 +51,7 @@ public class ICompsMapperDao {
 		int index2;
 		int cid;
 		int pid;
-		for(int sid=819;sid<=1019;sid++) {
+		for(int sid=1223;sid<=1423;sid++) {
 			//r=new Random();
 			index1=(int)(Math.random()*compIds.length);
 			cid=compIds[index1];

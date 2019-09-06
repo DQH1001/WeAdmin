@@ -1,0 +1,49 @@
+1.categories:List<String> ls;   String:List<Score>.getcomps.getcname
+
+2.data: [{
+                name: 'Microsoft Internet Explorer',
+                y: 56.33,
+                drilldown: 'Microsoft Internet Explorer'
+            }, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+
+series:ls1
+List<Score>()--->[{name:"",y:"",dirlldown:""},{},{}...]--->List<Map<String,Object>>() ls1
+Score:	name:Comp.cname
+	y:Score.number
+	drilldown:Comp.cname
+
+3.drilldown:{series:ls2}					List<List>
+List<Score.comps.pro[]>()--->[{name:"",id:"",data:[[],[],[],[].....]},{},{}....]--->list<Map<String,Object>> ls2
+series: [{
+                name: 'Microsoft Internet Explorer',
+                id: 'Microsoft Internet Explorer',
+                data: [
+                    [
+                        'v11.0',
+                        24.13
+                    ],
+                    [
+                        'v8.0',
+                        17.2
+                    ],
+                    [
+                        'v9.0',
+                        8.11
+                    ],
+                    [
+                        'v10.0',
+                        5.33
+                    ],
+                    [
+                        'v6.0',
+                        1.06
+                    ],
+                    [
+                        'v7.0',
+                        0.5
+                    ]
+                ]
+            }]
+
+ select COUNT(s.s_pid) as number ,s.s_cid,(SELECT cname from comps where cid=s.s_cid) as 
+    cname from scores s GROUP BY s.s_cid ORDER BY s.s_cid 

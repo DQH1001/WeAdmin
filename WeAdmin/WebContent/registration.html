@@ -61,7 +61,7 @@
             </div> -->
 
             <p>请在下面输入您的帐户详细信息</p>
-            <input id="nameChecked" onblur="myfunction()" name="sname" type="text" autofocus="" placeholder="学生ID" class="inp">
+            <input id="nameChecked" onblur="myfunction(value)" name="sname" type="text" autofocus="" placeholder="学生ID" class="inp">
             <span id="usn"></span><br>
             
             <input id="pwd1" type="password" name="spwd" onblur="reCheckPwd()" placeholder="Password" class="inp">
@@ -211,7 +211,13 @@ function cl(key,msg){
 } 
 	var namebool=0;
 	//用户名检测
-	function myfunction(){
+	function myfunction(value){
+		if(value!=null||value!=""){
+			if(value.replace(/[^\d]/g,'').length!=value.length){
+				$("#usn").html("<img src='upload1/checknone.png' title='ID只能为纯数字'/>");
+				return;
+			}
+		}
 		$.ajax({
 			url:"RegistrationChecked",
 			method:"post",

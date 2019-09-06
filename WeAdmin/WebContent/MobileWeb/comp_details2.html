@@ -105,10 +105,10 @@
 			
 		      <div class="social-share" data-sites="weibo, qzone"></div>
 		   
-				<div v-if="seen3" style="margin-left:92%;">
+				<div v-if="seen3" style="margin-left:90%;">
 		          	 <img src="../images/ok1.png" style="width:30px;height:30px;" @click="nolike()">
 	            </div>
-	            <div v-else style="margin-left:92%;">
+	            <div v-else style="margin-left:90%;">
 		            <img padding="500px" src="../images/no1.png" style="width:30px;height:30px;" @click="ilike()">
 	            </div>
             <div class="decoration"></div>
@@ -183,8 +183,8 @@
                 <strong>主题：{{cw.wtitle}}</strong><a class="pull-right reply" @click="reply(cw.wid,cw.wtitle)">Reply</a>
                 <em><br><span class="pull-left">回复数量:{{cw.wcount}}<br>回复时间：{{cw.wdate}} <br>内容：{{cw.wcontent}}  </span></em>
                  
-               
-                <div class="album" style="margin-left:120px;">            
+               <!-- style="margin-left:120px;" -->
+                <div class="album" >            
                 <img width="50px" height="50px" :src="'../upload/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!='' && cw.wauthor=='s'">
                 <img width="50px" height="50px" :src="'../../Comps/upload/comps/'+cw.wimages" v-if="cw.wimages!=null && cw.wimages!='' && cw.wauthor=='c'">
            		</div>
@@ -255,7 +255,7 @@
                         </div>
                     </div>
                     <p>
-                        <button @click="sub()" class="btn btn-post-cmnt pull-right" type="button">Post Comment</button>
+                        <button @click="sub()" class="btn btn-post-cmnt pull-right" type="reset">Post Comment</button>
                     </p>
                 </form>
             </div>
